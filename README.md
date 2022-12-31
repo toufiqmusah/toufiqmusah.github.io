@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @toufiqmusah
-- 👀 I’m interested in Digital Systems Design and Hardware.
+- 👀 I’m interested in Computer Architecture and Design.
 - 🌱 I’m currently a Biomedical Engineering Student.
 - 💞️ I’m looking to collaborate on ...nothing yet.
 - 📫 How to reach me ... Twitter - @tawfi_tawfi
