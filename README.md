@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @toufiqmusah
-- 👀 I’m interested in Engineering Design, Computer Architecture and Deep Learning.
+- 👀 I’m interested in Engineering Design, Deep Learning, and Computer Architecture.
 - 🌱 I’m currently a Biomedical Engineering Student.
 - 💞️ I’m looking to collaborate on ... projects at the crossroads of healthcare and technology.
 - 📫 How to reach me ... Twitter - @tawfi_tawfi
