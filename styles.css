@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.brief {
+    margin-left: -50px; /* Adjust to move left */
+    text-align: left; 
+}
+
+.brief h1, .brief h2, .brief h3 {
+    margin: 0;
+    padding: 0;
+  }
+  
