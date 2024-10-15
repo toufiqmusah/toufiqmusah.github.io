@@ -12,8 +12,16 @@ body {
     text-align: left; 
 }
 
-.brief h1, .brief h2, .brief h3 {
+.brief h1, .brief h2, .brief h3, .brief h4 {
     margin: 0;
     padding: 0;
   }
+
+
+.profile-img img {
+    margin-left: 50px; /* Adjust to move left */
+    border-radius: 50%;
+}
+
+
   
