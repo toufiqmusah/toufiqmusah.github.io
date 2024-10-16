@@ -1,30 +1,206 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh; /* Full viewport height */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    font-family: 'Roboto', 'Open Sans', 'Lato', Arial, sans-serif;
+    zoom: 1; /* Added zoom to make the page slightly larger */
+}
+
+.home-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Changed from center to flex-start */
+    width: 100%;
+    height: 100vh;
+    max-width: 1200px;
+    padding: 40px;
+    box-sizing: border-box;
 }
 
 .brief {
-    margin-left: -50px; /* Adjust to move left */
-    text-align: left; 
+    text-align: center;
+    margin-bottom: 40px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -30%; /* Move 30% to the left */
 }
 
 .brief h1, .brief h2, .brief h3, .brief h4 {
     margin: 0;
     padding: 0;
-  }
-
-
-.profile-img img {
-    margin-left: 50px; /* Adjust to move left */
 }
 
-img {
+.brief h1 {
+    font-size: clamp(3em, 8vw, 4em);
+    font-weight: 700; /* Bold */
+}
+
+.brief h2 {
+    font-size: clamp(2.5em, 7vw, 3.5em);
+    font-weight: 600; /* Semi-bold */
+}
+
+.brief h3 {
+    font-size: clamp(0.8em, 3.5vw, 1.8em); /* Further reduced size */
+    font-weight: 400; /* Regular */
+}
+
+.brief h4 {
+    font-size: clamp(0.6em, 3vw, 1.5em); /* Reduced size further */
+    font-weight: 300; /* Light */
+}
+
+.profile-img {
+    margin-top: 40px;
+    margin-left: -30%; /* Move 30% to the left */
+}
+
+.profile-img img {
+    max-width: 350px; /* Increased from 300px to 350px */
+    width: 100%;
+    height: auto;
     border-radius: 50%;
 }
 
+.dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: radial-gradient(#e5e7eb 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+    z-index: -1;
+}
 
-  
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0; /* Increased padding */
+    background-color: rgba(0, 0, 0, 0.8); /* Darker backdrop */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.navigation button {
+    padding: 15px 30px; /* Increased padding */
+    font-size: 24px; /* Increased font size */
+    font-weight: 600; /* Increased font weight */
+    border: none;
+    border-radius: 8px; /* Increased border radius */
+    background: linear-gradient(to right, #e0e0e0, #ffffff);
+    color: #222;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.navigation button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.navigation button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.social-links {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    font-size: 28px; /* Increased from 14px to 28px (100% larger) */
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.social-links a:hover {
+    color: #007bff;
+}
+
+.social-links a::before {
+    content: '';
+    display: inline-block;
+    width: 28px; /* Same as font-size */
+    height: 28px; /* Same as font-size */
+    margin-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.social-links a[href*="linkedin"]::before {
+    background-image: url('path/to/linkedin-icon.svg');
+}
+
+.social-links a[href*="github"]::before {
+    background-image: url('path/to/github-icon.svg');
+}
+
+.social-links a[href*="twitter"]::before {
+    background-image: url('path/to/twitter-icon.svg');
+}
+
+@media (min-width: 768px) {
+    .home-page {
+        flex-direction: row;
+        justify-content: flex-start; /* Changed from space-between to flex-start */
+        align-items: center;
+    }
+
+    .brief {
+        text-align: left;
+        margin-right: 60px;
+        margin-bottom: 0;
+        margin-left: 0; /* Reset margin-left for desktop view */
+    }
+
+    .profile-img {
+        margin-top: 0;
+        margin-left: 0; /* Reset margin-left for desktop view */
+    }
+}
+
+@media (max-width: 767px) {
+    .navigation {
+        flex-wrap: wrap;
+        padding: 20px 0; /* Adjusted padding for mobile */
+    }
+
+    .navigation button {
+        font-size: 18px; /* Adjusted font size for mobile */
+        padding: 12px 24px; /* Adjusted padding for mobile */
+    }
+
+    .social-links {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .brief, .profile-img {
+        margin-left: 0; /* Reset margin-left for mobile view */
+    }
+}

@@ -5,20 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toufiq Musah</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <title>About</title>
+    <header>
+        <nav class="navigation">
+            <button onclick="scrollToSection('home')">Home</button>
+            <button onclick="scrollToSection('research')">Research</button>
+            <button onclick="scrollToSection('projects')">Projects</button>
+            <button onclick="scrollToSection('work-experience')">Work Experience</button>
+            <button onclick="scrollToSection('blogs-talks')">Blogs & Talks</button>
+            <button onclick="scrollToSection('extras')">Extras</button>
+        </nav>
+    </header>
 
-    <div class = "brief">
-        <h1>Hi,</h1>
-        <h2>I'm Toufiq Musah</h2>
-        <h3>Currently A Biomedical Researcher & Engineer at <span style="color: red;">KCCR</span></h3>
-        <h4><a href = "https://kccr-ghana.org/" target = "_blank">(Kumasi Centre for Collaborative Research in Tropical Medicine)</a></h4>
-    </div>
+    <main class="content">
+        <section id="home" class="home-page">
+            <div class="dot"></div>
 
-    <div class = "profile-img">
-        <img src = "images/miccai-profile.jpg" alt = "My Profile Picture" width="200">
-    </div>
-    
+            <div class="brief">
+                <h4>🚧<span style="color: red;">This site is under construction</span></h4>
+                <h1>Hi,</h1>
+                <h2>I'm Toufiq Musah</h2>
+                <h3>Currently A Biomedical Researcher & Engineer at <span style="color: red;">KCCR</span></h3>
+                <h4><a href="https://kccr-ghana.org/" target="_blank" rel="noopener noreferrer">(Kumasi Centre for Collaborative Research in Tropical Medicine)</a></h4>
+            </div>
+
+            <div class="profile-img">
+                <img src="images/miccai-profile.jpg" alt="Toufiq Musah Profile Picture" width="200" height="200">
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/toufiq-musah-913281226/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://twitter.com/tawfi_tawfi" target="_blank" rel="noopener noreferrer">Twitter</a>
+            </div>
+        </section>
+
+        <section id="research">
+            <!-- Research content goes here -->
+        </section>
+
+        <section id="projects">
+            <!-- Projects content goes here -->
+        </section>
+
+        <section id="work-experience">
+            <!-- Work Experience content goes here -->
+        </section>
+
+        <section id="blogs-talks">
+            <!-- Blogs & Talks content goes here -->
+        </section>
+
+        <section id="extras">
+            <!-- Extras content goes here -->
+        </section>
+    </main>
+
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({behavior: "smooth"});
+        }
+    </script>
 </body>
 </html>
