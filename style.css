@@ -29,40 +29,47 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-left: 0; /* Reset margin for mobile */
+    width: 100%; /* Ensure full width on mobile */
+    padding: 0 10px; /* Add some horizontal padding */
 }
 
 .brief h1, .brief h2, .brief h3, .brief h4 {
     margin: 0;
     padding: 0;
+    word-wrap: break-word; /* Allow long words to break */
+    overflow-wrap: break-word; /* Modern browsers */
 }
 
 .brief h1 {
-    font-size: clamp(2em, 8vw, 3em);
+    font-size: clamp(1.8em, 7vw, 3em);
     font-weight: 700;
 }
 
 .brief h2 {
-    font-size: clamp(1.8em, 7vw, 2.5em);
+    font-size: clamp(1.6em, 6vw, 2.5em);
     font-weight: 600;
 }
 
 .brief h3 {
-    font-size: clamp(0.8em, 3.5vw, 1.5em);
+    font-size: clamp(0.7em, 3vw, 1.5em);
     font-weight: 400;
 }
 
 .brief h4 {
-    font-size: clamp(0.6em, 3vw, 1.2em);
+    font-size: clamp(0.5em, 2.5vw, 1.2em);
     font-weight: 300;
 }
 
 .profile-img {
     margin-top: 20px;
     margin-left: 0; /* Reset margin for mobile */
+    width: 100%; /* Full width container */
+    display: flex;
+    justify-content: center; /* Center the image */
 }
 
 .profile-img img {
-    max-width: 250px; /* Reduced size for mobile */
+    max-width: 200px; /* Further reduced size for mobile */
     width: 100%;
     height: auto;
     border-radius: 50%;
@@ -90,15 +97,15 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    padding: 10px 0;
+    padding: 10px 5px; /* Reduced horizontal padding */
     background-color: rgba(0, 0, 0, 0.8);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 1000;
 }
 
 .navigation button {
-    padding: 10px 15px;
-    font-size: 16px;
+    padding: 8px 12px; /* Reduced padding */
+    font-size: 14px; /* Smaller font size */
     font-weight: 600;
     border: none;
     border-radius: 4px;
@@ -107,6 +114,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .navigation button:hover, .navigation button:active {
@@ -116,19 +124,22 @@ body {
 
 .social-links {
     position: static;
-    margin-top: 10px; /* Reduced from 20px to bring the buttons up a little */
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    width: 100%; /* Full width */
 }
 
 .social-links a {
-    font-size: 24px;
+    font-size: 20px; /* Slightly smaller font size */
     color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
     display: flex;
     align-items: center;
+    margin-bottom: 10px; /* Add some vertical spacing */
 }
 
 .social-links a:hover {
@@ -138,24 +149,12 @@ body {
 .social-links a::before {
     content: '';
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 20px; /* Slightly smaller icon size */
+    height: 20px;
     margin-right: 6px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-}
-
-.social-links a[href*="linkedin"]::before {
-    background-image: url('path/to/linkedin-icon.svg');
-}
-
-.social-links a[href*="github"]::before {
-    background-image: url('path/to/github-icon.svg');
-}
-
-.social-links a[href*="twitter"]::before {
-    background-image: url('path/to/twitter-icon.svg');
 }
 
 /* Add this to your existing CSS */
@@ -166,12 +165,15 @@ section {
 
 /* New styles for the research section */
 #research {
-    padding: 40px 20px;
+    padding: 40px 10px; /* Reduced horizontal padding */
     background-color: #f9f9f9;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 #research h2 {
-    font-size: 2em;
+    font-size: 1.8em; /* Slightly smaller */
     color: #333;
     margin-bottom: 30px;
     text-align: center;
@@ -182,7 +184,7 @@ section {
 }
 
 .research-category h3 {
-    font-size: 1.5em;
+    font-size: 1.3em; /* Slightly smaller */
     color: #444;
     margin-bottom: 20px;
     border-bottom: 2px solid #007bff;
@@ -192,22 +194,27 @@ section {
 .research-item {
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
+    padding: 15px; /* Reduced padding */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .research-item h4 {
-    font-size: 1.2em;
+    font-size: 1.1em; /* Slightly smaller */
     color: #007bff;
     margin-bottom: 5px;
     line-height: 1.3;
+    word-wrap: break-word;
 }
 
 .research-item p {
     color: #666;
     line-height: 1.4;
     margin-bottom: 5px;
+    word-wrap: break-word;
+    font-size: 0.9em; /* Slightly smaller */
 }
 
 .research-item p strong {
@@ -226,14 +233,15 @@ section {
 
     .brief {
         text-align: left;
-        margin-right: 20px; /* Reduced from 40px to bring items closer */
+        margin-right: 40px;
         margin-bottom: 0;
-        max-width: 65%; /* Increased from 60% to allow more space for text */
+        max-width: 60%;
+        padding: 0; /* Remove padding on larger screens */
     }
 
     .profile-img {
         margin-top: 0;
-        max-width: 25%; /* Reduced from 30% to bring items closer */
+        max-width: 30%;
     }
 
     .navigation {
@@ -256,7 +264,6 @@ section {
         scroll-margin-top: 80px;
     }
 
-    /* Adjustments for research section on larger screens */
     #research {
         padding: 60px 40px;
         max-width: 1200px;
@@ -270,7 +277,6 @@ section {
     }
 
     .research-item {
-        width: calc(50% - 10px); /* Reduced from 50% - 20px to bring items even closer */
-        margin-bottom: 15px; /* Reduced from 20px to decrease vertical spacing */
+        width: calc(50% - 20px);
     }
 }
