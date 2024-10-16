@@ -39,9 +39,18 @@
             </div>
 
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/toufiq-musah-913281226/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://twitter.com/tawfi_tawfi" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="https://www.linkedin.com/in/toufiq-musah-913281226/" target="_blank" rel="noopener noreferrer">
+                    <img src="images/linkedin-96.svg" alt="LinkedIn" class="social-icon" width="40" height="40">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer">
+                    <img src="images/github-mark.svg" alt="GitHub" class="social-icon" width="30" height="30">
+                    GitHub
+                </a>
+                <a href="https://twitter.com/tawfi_tawfi" target="_blank" rel="noopener noreferrer">
+                    <img src="images/twitter.svg" alt="Twitter" class="social-icon" width="40" height="40">
+                    Twitter
+                </a>
             </div>
         </section>
 
@@ -68,7 +77,13 @@
 
     <script>
         function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({behavior: "smooth"});
+            const section = document.getElementById(sectionId);
+            const navHeight = document.querySelector('.navigation').offsetHeight;
+            const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+                top: sectionPosition - navHeight,
+                behavior: "smooth"
+            });
         }
     </script>
 </body>
