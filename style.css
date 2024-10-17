@@ -65,7 +65,8 @@ body {
     margin-left: 0; /* Reset margin for mobile */
     width: 100%; /* Full width container */
     display: flex;
-    justify-content: center; /* Center the image */
+    flex-direction: column; /* Stack image and social links vertically */
+    align-items: center; /* Center the image and social links */
 }
 
 .profile-img img {
@@ -73,6 +74,7 @@ body {
     width: 100%;
     height: auto;
     border-radius: 50%;
+    margin-bottom: 20px; /* Add space between image and social links */
 }
 
 .dot {
@@ -123,15 +125,12 @@ body {
 }
 
 .social-links {
-    position: absolute;
-    bottom: 20%; /* Move up by 20% from the bottom */
-    left: 0;
-    right: 0;
     display: flex;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
     width: 100%; /* Full width */
+    margin-top: 20px; /* Add space above social links */
 }
 
 .social-links a {
@@ -160,13 +159,10 @@ body {
 }
 
 .icons-by {
-    position: absolute;
-    bottom: 10%; /* Position below social links */
-    left: 0;
-    right: 0;
     text-align: center;
     font-size: 12px;
     color: #666;
+    margin-top: 20px; /* Add space above the icons-by text */
 }
 
 /* Add this to your existing CSS */
@@ -254,6 +250,11 @@ section {
     .profile-img {
         margin-top: 0;
         max-width: 30%;
+        flex-direction: row; /* Revert to horizontal layout for larger screens */
+    }
+
+    .profile-img img {
+        margin-bottom: 0; /* Remove margin between image and social links */
     }
 
     .navigation {
@@ -266,11 +267,19 @@ section {
     }
 
     .social-links {
+        position: absolute;
         bottom: 20%; /* Keep the 20% up position for larger screens */
+        left: 0;
+        right: 0;
+        margin-top: 0; /* Remove top margin for larger screens */
     }
 
     .icons-by {
+        position: absolute;
         bottom: 15%; /* Adjust for larger screens */
+        left: 0;
+        right: 0;
+        margin-top: 0; /* Remove top margin for larger screens */
     }
 
     section {
@@ -290,6 +299,6 @@ section {
     }
 
     .research-item {
-        width: calc(50% - 20px);
+        width: calc(100% - 20px); /* Make the research item full width minus some margin */
     }
 }
