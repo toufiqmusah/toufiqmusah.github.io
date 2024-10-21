@@ -207,6 +207,12 @@ section {
     margin-bottom: 20px;
     width: 100%;
     box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.research-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .research-item h4 {
@@ -227,6 +233,76 @@ section {
 
 .research-item p strong {
     color: #333;
+}
+
+/* New styles for the work experience section */
+#work-experience {
+    padding: 40px 20px;
+    background-color: #f0f8ff; /* Light blue background */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#work-experience h2 {
+    font-size: 2em;
+    color: #2c3e50; /* Darker blue for contrast */
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.experience-item {
+    background-color: #fff;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+}
+
+.experience-item h3 {
+    font-size: 1.3em;
+    color: #3498db; /* Blue color for company names */
+    margin-bottom: 10px;
+}
+
+.job-title {
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+.job-info {
+    display: flex;
+    justify-content: space-between;
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.experience-item ul {
+    padding-left: 20px;
+    color: #555;
+}
+
+.experience-item li {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.experience-item li::before {
+    content: '•';
+    color: #3498db;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
 }
 
 @media (min-width: 768px) {
@@ -286,7 +362,7 @@ section {
         scroll-margin-top: 80px;
     }
 
-    #research {
+    #research, #work-experience {
         padding: 60px 40px;
         max-width: 1200px;
         margin: 0 auto;
@@ -298,7 +374,17 @@ section {
         justify-content: space-between;
     }
 
-    .research-item {
-        width: calc(100% - 20px); /* Make the research item full width minus some margin */
+    .research-item, .work-item {
+        width: calc(100% - 20px); /* Make the items full width minus some margin */
+    }
+
+    #work-experience {
+        padding: 60px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .experience-item {
+        padding: 30px;
     }
 }
