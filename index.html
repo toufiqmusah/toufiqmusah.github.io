@@ -28,8 +28,10 @@
 
             <div class="brief">
                 <h4>🚧<span style="color: red;">This site is under construction</span></h4>
-                <h1>Hi,</h1>
-                <h2>I'm Toufiq Musah</h2>
+                <div class="typewriter">
+                    <h1>Hi,</h1>
+                    <h2 id="typewriter-text"></h2>
+                </div>
                 <h3>Currently A Biomedical Research Assistant & Engineer at <span style="color: red;">KCCR</span></h3>
                 <h4><a href="https://kccr-ghana.org/" target="_blank" rel="noopener noreferrer">(Kumasi Centre for Collaborative Research in Tropical Medicine)</a></h4>
             </div>
@@ -170,6 +172,26 @@
                 behavior: "smooth"
             });
         }
+
+        // Add this new function for the typewriter effect
+        function typeWriter(text, i, fnCallback) {
+            if (i < text.length) {
+                document.getElementById("typewriter-text").innerHTML = text.substring(0, i+1) + '<span aria-hidden="true"></span>';
+
+                setTimeout(function() {
+                    typeWriter(text, i + 1, fnCallback)
+                }, 100);
+            } else if (typeof fnCallback == 'function') {
+                setTimeout(fnCallback, 700);
+            }
+        }
+
+        // Start the typewriter effect when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            typeWriter("I'm Toufiq Musah", 0, function() {
+                // Callback after typing is complete
+            });
+        });
     </script>
 </body>
 </html>
