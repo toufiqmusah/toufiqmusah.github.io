@@ -7,6 +7,10 @@ body {
     align-items: center;
     font-family: 'Roboto', 'Open Sans', 'Lato', Arial, sans-serif;
     font-size: 16px; /* Base font size for better readability on mobile */
+    background-color: #f0f4f8;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    line-height: 1.6;
+    color: #333;
 }
 
 .home-page {
@@ -61,20 +65,60 @@ body {
 }
 
 .profile-img {
-    margin-top: 20px;
-    margin-left: 0; /* Reset margin for mobile */
-    width: 100%; /* Full width container */
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    transform: rotate(-3deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 220px; /* Adjust as needed */
+    height: 220px; /* Adjust as needed */
     display: flex;
-    flex-direction: column; /* Stack image and social links vertically */
-    align-items: center; /* Center the image and social links */
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img:hover {
+    transform: rotate(0deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .profile-img img {
-    max-width: 200px; /* Further reduced size for mobile */
-    width: 100%;
-    height: auto;
+    display: block;
+    width: 200px; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
     border-radius: 50%;
-    margin-bottom: 20px; /* Add space between image and social links */
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+.profile-img img:hover {
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.8);
+}
+
+.profile-img::before,
+.profile-img::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: radiate 2s infinite;
+}
+
+.profile-img::before {
+    width: 110%;
+    height: 110%;
+    border: 2px solid rgba(0, 123, 255, 0.5);
+}
+
+.profile-img::after {
+    width: 120%;
+    height: 120%;
+    border: 2px solid rgba(0, 123, 255, 0.3);
+    animation-delay: 0.5s;
 }
 
 .dot {
@@ -100,7 +144,8 @@ body {
     justify-content: center;
     gap: 10px;
     padding: 10px 5px; /* Reduced horizontal padding */
-    background-color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(to right, #2c3e50, #3498db);
+    padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 1000;
 }
@@ -111,8 +156,9 @@ body {
     font-weight: 600;
     border: none;
     border-radius: 4px;
-    background: linear-gradient(to right, #e0e0e0, #ffffff);
-    color: #222;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -122,6 +168,11 @@ body {
 .navigation button:hover, .navigation button:active {
     transform: translateY(-2px);
     box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.navigation button:hover {
+    background: white;
+    color: #3498db;
 }
 
 .social-links {
@@ -248,7 +299,6 @@ section {
     color: #2c3e50; /* Darker blue for contrast */
     margin-bottom: 30px;
     text-align: center;
-    border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
 }
 
@@ -429,20 +479,45 @@ section {
 .intro {
     opacity: 0;
     animation: fadeIn 1.5s ease-in forwards;
+    text-align: center; /* Center align for all views */
 }
 
 .intro h1 {
     font-size: clamp(2em, 8vw, 3.5em);
-    margin-bottom: 10px;
+    margin-bottom: 0; /* Remove bottom margin */
 }
 
 .intro h2 {
-    font-size: clamp(1.8em, 7vw, 3em);
-    background: linear-gradient(45deg, #007bff, #00ff88);
+    font-size: clamp(1.4em, 6vw, 2.5em);
+    display: flex;
+    flex-direction: row; /* Keep "I'm" and name on the same line */
+    justify-content: center; /* Center the content */
+    align-items: baseline; /* Align text baselines */
+    gap: 10px; /* Space between "I'm" and the name */
+    flex-wrap: wrap; /* Allow wrapping if needed on very small screens */
+    margin-top: 5px; /* Add a small top margin to h2 */
+}
+
+.intro .im {
+    color: #333; /* Or any color you prefer */
+    white-space: nowrap; /* Prevent "I'm" from breaking */
+}
+
+.intro .name {
+    background: linear-gradient(
+        to right, 
+        #007bff, 
+        #00ff88, 
+        #007bff, 
+        #00ff88
+    );
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: gradientFlow 5s ease infinite;
+    white-space: nowrap; /* Keep the name together */
 }
 
 @keyframes fadeIn {
@@ -450,8 +525,63 @@ section {
     to { opacity: 1; }
 }
 
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 @media (min-width: 768px) {
     .intro {
         text-align: left;
     }
+
+    .intro h2 {
+        justify-content: flex-start; /* Align to the left on larger screens */
+    }
 }
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes radiate {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0;
+    }
+}
+
+#research, #work-experience {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.social-links a {
+    background-color: #f0f4f8;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #3498db;
+    color: white;
+}
+
