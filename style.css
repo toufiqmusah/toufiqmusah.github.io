@@ -181,21 +181,27 @@ body {
     gap: 15px;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
     width: 100%; /* Full width */
-    margin-top: 20px; /* Add space above social links */
+    margin-top: 40px; /* Increased space above social links */
 }
 
 .social-links a {
     font-size: 20px; /* Slightly smaller font size */
     color: #333;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     margin-bottom: 10px; /* Add some vertical spacing */
+    background-color: #f0f4f8;
+    padding: 10px 15px; /* Increased horizontal padding for a more rectangular shape */
+    border-radius: 8px; /* Rounded rectangle shape */
 }
 
 .social-links a:hover {
-    color: #007bff;
+    color: white;
+    background-color: #3498db;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .social-links a::before {
@@ -394,7 +400,7 @@ section {
 
     .social-links {
         position: absolute;
-        bottom: 20%; /* Keep the 20% up position for larger screens */
+        bottom: 15%; /* Lowered position for larger screens */
         left: 0;
         right: 0;
         margin-top: 0; /* Remove top margin for larger screens */
@@ -402,7 +408,7 @@ section {
 
     .icons-by {
         position: absolute;
-        bottom: 15%; /* Adjust for larger screens */
+        bottom: 10%; /* Adjusted for larger screens */
         left: 0;
         right: 0;
         margin-top: 0; /* Remove top margin for larger screens */
@@ -573,15 +579,233 @@ h1, h2, h3, h4, h5, h6 {
     color: #2c3e50;
 }
 
-.social-links a {
-    background-color: #f0f4f8;
-    padding: 10px;
-    border-radius: 50%;
+/* Updated Research Section Styles */
+#research {
+    background: linear-gradient(135deg, #f6f8fb 0%, #e9f0f7 100%);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 40px auto;
+}
+
+.research-item {
+    background-color: white;
+    border-left: 4px solid #007bff;
+    border-radius: 0 8px 8px 0;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.research-item:hover {
+    transform: translateX(5px);
+    border-left-color: #00ff88;
+}
+
+.research-category h3 {
+    color: #007bff;
+    font-size: 1.4em;
+    border-bottom: none;
+    position: relative;
+    padding-left: 15px;
+}
+
+.research-category h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 25px;
+    background: linear-gradient(to bottom, #007bff, #00ff88);
+    border-radius: 3px;
+}
+
+/* Updated Work Experience Section Styles */
+#work-experience {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    padding: 60px 30px;
+}
+
+#work-experience h2 {
+    color: white;
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.experience-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
     transition: all 0.3s ease;
 }
 
-.social-links a:hover {
-    background-color: #3498db;
+.experience-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.experience-item h3 {
+    color: #fff;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.job-title {
+    color: #00ff88;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.job-info {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.experience-item ul {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.experience-item li::before {
+    color: #00ff88;
+}
+
+/* Projects Section Styling */
+#projects {
+    background: linear-gradient(135deg, #1a1c20 0%, #2d3436 100%);
+    padding: 60px 20px;
     color: white;
 }
 
+#projects h2 {
+    text-align: center;
+    color: white;
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00ff88, #00bcd4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card h3 {
+    color: #00ff88;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.project-tags span {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* Category-specific styling */
+.project-card.medical-ai::before {
+    background: linear-gradient(90deg, #00ff88, #00bcd4);
+}
+
+.project-card.imaging::before {
+    background: linear-gradient(90deg, #ff6b6b, #ffd93d);
+}
+
+.project-card.data-science::before {
+    background: linear-gradient(90deg, #6c5ce7, #a8e6cf);
+}
+
+.project-card.engineering::before {
+    background: linear-gradient(90deg, #fd79a8, #0984e3);
+}
+
+.project-card.iot::before {
+    background: linear-gradient(90deg, #00cec9, #81ecec);
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+    
+    .project-card {
+        margin-bottom: 20px;
+    }
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.project-link:hover {
+    background: rgba(0, 255, 136, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
