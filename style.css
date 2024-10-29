@@ -21,7 +21,7 @@ body {
     width: 100%;
     min-height: 100vh;
     max-width: 100%;
-    padding: 80px 20px 20px; /* Increased top padding */
+    padding: 120px 20px 20px; /* Further increased top padding */
     box-sizing: border-box;
 }
 
@@ -181,14 +181,14 @@ body {
     gap: 15px;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
     width: 100%; /* Full width */
-    margin-top: 40px; /* Increased space above social links */
+    margin-top: 60px; /* Increased space above social links */
 }
 
 .social-links a {
     font-size: 20px; /* Slightly smaller font size */
     color: #333;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     margin-bottom: 10px; /* Add some vertical spacing */
@@ -198,10 +198,10 @@ body {
 }
 
 .social-links a:hover {
-    color: white;
-    background-color: #3498db;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: #3498db;
+    background-color: #e6f2ff;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .social-links a::before {
@@ -680,6 +680,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, #1a1c20 0%, #2d3436 100%);
     padding: 60px 20px;
     color: white;
+    border-radius: 15px;
 }
 
 #projects h2 {
