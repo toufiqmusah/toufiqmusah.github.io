@@ -810,3 +810,39 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Styles for the award container */
+.award-container {
+    position: relative; /* Position relative for tooltip positioning */
+    display: inline-block; /* Aligns the icon and tooltip */
+    float: right; /* Align the award icon to the right */
+}
+
+.award-icon {
+    width: 40px; /* Adjusted size for the award icon */
+    height: 40px; /* Adjusted size for the award icon */
+}
+
+/* Styles for the tooltip */
+.tooltip {
+    visibility: hidden; /* Hidden by default */
+    width: 200px; /* Set width of tooltip */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+    color: #fff; /* White text */
+    text-align: center; /* Centered text */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px; /* Padding around text */
+    position: absolute; /* Positioning */
+    z-index: 1; /* Ensure it appears above other elements */
+    bottom: 125%; /* Position above the icon */
+    left: 50%; /* Center horizontally */
+    margin-left: -100px; /* Adjust to center */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s; /* Smooth transition */
+}
+
+/* Show the tooltip on hover */
+.award-container:hover .tooltip {
+    visibility: visible; /* Show tooltip */
+    opacity: 1; /* Fade in */
+}
