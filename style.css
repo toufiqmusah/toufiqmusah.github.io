@@ -140,14 +140,19 @@ body {
     left: 0;
     right: 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px 5px; /* Reduced horizontal padding */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; /* Adjust padding */
     background: linear-gradient(to right, #2c3e50, #3498db);
-    padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 1000;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    flex-grow: 1; /* Allow the buttons to take up available space */
+    gap: 15px; /* Space between navigation buttons */
 }
 
 .navigation button {
@@ -204,16 +209,6 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.social-links a::before {
-    content: '';
-    display: inline-block;
-    width: 20px; /* Slightly smaller icon size */
-    height: 20px;
-    margin-right: 6px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 
 .icons-by {
     text-align: center;
@@ -834,7 +829,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute; /* Positioning */
     z-index: 1; /* Ensure it appears above other elements */
     bottom: 125%; /* Position above the icon */
-    left: 50%; /* Center horizontally */
+    left: 0%; /* Center horizontally */
     margin-left: -100px; /* Adjust to center */
     opacity: 0; /* Hidden by default */
     transition: opacity 0.3s; /* Smooth transition */
@@ -844,4 +839,221 @@ h1, h2, h3, h4, h5, h6 {
 .award-container:hover .tooltip {
     visibility: visible; /* Show tooltip */
     opacity: 1; /* Fade in */
+}
+
+/* Unique Styles for the Blogs & Talks Section */
+#blogs-talks {
+    padding: 40px 20px; /* Padding for the section */
+    background-color: #ffffff; /* White background for clarity */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+    margin: 40px auto; /* Center the section with margin */
+    max-width: 1200px; /* Max width for larger screens */
+    position: relative; /* For pseudo-elements */
+}
+
+#blogs-talks h2 {
+    font-size: 2.5em; /* Larger heading size */
+    color: #2c3e50; /* Darker color for contrast */
+    text-align: center; /* Center the heading */
+    margin-bottom: 30px; /* Space below the heading */
+    position: relative; /* For text shadow */
+}
+
+.talks, .blogs, .upcoming {
+    margin-bottom: 30px; /* Space between sections */
+}
+
+.talk-item, .blog-item, .upcoming-item {
+    background-color: #f9f9f9; /* Light gray background for items */
+    border-left: 5px solid #007bff; /* Blue left border for emphasis */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside items */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 15px; /* Space between items */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.talk-item:hover, .blog-item:hover, .upcoming-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.talk-item h4, .blog-item h4, .upcoming-item h4 {
+    color: #007bff; /* Blue color for titles */
+    margin-bottom: 10px; /* Space below titles */
+    font-family: 'Roboto', sans-serif; /* Custom font */
+    position: relative; /* For text shadow */
+}
+
+.talk-item p, .blog-item p, .upcoming-item p {
+    color: #555; /* Dark gray for text */
+    line-height: 1.6; /* Line height for readability */
+}
+
+/* Add a unique hover effect for titles */
+.talk-item h4:hover, .blog-item h4:hover, .upcoming-item h4:hover {
+    text-decoration: underline; /* Underline effect on hover */
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* Add a unique background for the section */
+#blogs-talks::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 123, 255, 0.05); /* Light blue overlay */
+    border-radius: 15px; /* Match the border radius */
+    z-index: -1; /* Behind the content */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .navigation {
+    background: linear-gradient(to right, #1f1f1f, #333);
+}
+
+.dark-mode .navigation button {
+    background: transparent;
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+.dark-mode .navigation button:hover {
+    background: #333;
+    color: #00ff88;
+}
+
+.dark-mode .home-page {
+    background-color: #2a2a2a;
+    opacity: 50;
+}
+
+.dark-mode .brief h1, 
+.dark-mode .brief h2, 
+.dark-mode .brief h3, 
+.dark-mode .brief h4 {
+    color: #e0e0e0;
+}
+
+.dark-mode .profile-img {
+    background: #1a1a1a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .social-links a {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.dark-mode .social-links a:hover {
+    background-color: #333;
+    color: #00ff88;
+}
+
+.dark-mode #research, 
+.dark-mode #work-experience, 
+.dark-mode #projects {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+.dark-mode .research-item, 
+.dark-mode .experience-item, 
+.dark-mode .project-card {
+    background-color: #141010;
+    border-color: #7a7777;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(46, 40, 40, 0.2);
+}
+
+.dark-mode .research-item:hover, 
+.dark-mode .experience-item:hover, 
+.dark-mode .project-card:hover {
+    background-color: #250101;
+}
+
+.dark-mode .project-card h3, 
+.dark-mode .research-item h4, 
+.dark-mode .experience-item h3 {
+    color: #00ff88;
+}
+
+.dark-mode .project-link {
+    background: rgba(0, 255, 136, 0.1);
+    color: #1005e3;
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.dark-mode .project-link:hover {
+    background: rgba(0, 255, 136, 0.2);
+}
+
+/* Toggle Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #00ff88;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.dark-mode-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between label and switch */
+    margin-right: 20px; /* Move the dark mode toggle slightly to the left */
+}
+
+.dark-mode-label {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
 }

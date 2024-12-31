@@ -16,12 +16,21 @@
 <body>
     <header>
         <nav class="navigation">
-            <button onclick="scrollToSection('home')">Home</button>
-            <button onclick="scrollToSection('research')">Research</button>
-            <button onclick="scrollToSection('work-experience')">Work Experience</button>
-            <button onclick="scrollToSection('projects')">Projects</button>
-            <button onclick="scrollToSection('blogs-talks')">Blogs & Talks</button>
-            <button onclick="scrollToSection('extras')">Extras</button>
+            <div class="navigation-buttons">
+                <button onclick="scrollToSection('home')">Home</button>
+                <button onclick="scrollToSection('research')">Research</button>
+                <button onclick="scrollToSection('work-experience')">Work Experience</button>
+                <button onclick="scrollToSection('projects')">Projects</button>
+                <button onclick="scrollToSection('blogs-talks')">Blogs & Talks</button>
+                <button onclick="scrollToSection('extras')">Extras</button>
+            </div>
+            <div class="dark-mode-container">
+                <span class="dark-mode-label">Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
         </nav>
     </header>
 
@@ -68,6 +77,8 @@
                     href="https://icons8.com">Icons8</a>
             </div>
         </section>
+
+        
 
         <section id="research">
             <!-- Remember to add a button to pop up the abstracts of the papers -->
@@ -291,7 +302,7 @@
 
 
         <section id="blogs-talks">
-            <!-- Blogs & Talks content goes here -->
+            <!-- Add more upcoming talks as needed -->
         </section>
 
         <section id="extras">
@@ -328,6 +339,23 @@
             typeWriter("I'm Toufiq Musah", 0, function () {
                 // Callback after typing is complete
             });
+        });
+    </script>
+
+
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+        // Set dark mode as default
+        document.addEventListener('DOMContentLoaded', function() {
+            const isDarkMode = localStorage.getItem('dark-mode') !== 'false'; // Default to true
+            darkModeToggle.checked = isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+        });
+
+        darkModeToggle.addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode', this.checked);
+            localStorage.setItem('dark-mode', this.checked);
         });
     </script>
 </body>
