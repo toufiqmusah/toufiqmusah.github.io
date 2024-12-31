@@ -146,6 +146,7 @@ body {
     background: linear-gradient(to right, #2c3e50, #3498db);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 1000;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .navigation-buttons {
@@ -153,6 +154,7 @@ body {
     justify-content: center; /* Center the buttons */
     flex-grow: 1; /* Allow the buttons to take up available space */
     gap: 15px; /* Space between navigation buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
 
 .navigation button {
@@ -1056,4 +1058,21 @@ input:checked + .slider:before {
     color: white;
     font-size: 14px;
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .navigation {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center; /* Center items */
+    }
+
+    .navigation-buttons {
+        justify-content: center; /* Center buttons */
+        width: 100%; /* Full width for buttons */
+        margin-bottom: 10px; /* Space below buttons */
+    }
+
+    .dark-mode-container {
+        margin-right: 0; /* Reset margin for mobile */
+    }
 }
