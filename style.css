@@ -815,7 +815,8 @@ h1, h2, h3, h4, h5, h6 {
     float: right; /* Align the award icon to the right */
 }
 
-.award-icon { width: 40px; /* Adjusted size for the award icon */
+.award-icon {
+    width: 40px; /* Adjusted size for the award icon */
     height: 40px; /* Adjusted size for the award icon */
 }
 
