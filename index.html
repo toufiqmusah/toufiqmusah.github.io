@@ -24,13 +24,6 @@
                 <button onclick="scrollToSection('blogs-talks')">Blogs & Talks</button>
                 <button onclick="scrollToSection('extras')">Extras</button>
             </div>
-            <div class="dark-mode-container">
-                <span class="dark-mode-label">Dark Mode</span>
-                <label class="switch">
-                    <input type="checkbox" id="dark-mode-toggle">
-                    <span class="slider"></span>
-                </label>
-            </div>
         </nav>
     </header>
 
@@ -339,23 +332,6 @@
             typeWriter("I'm Toufiq Musah", 0, function () {
                 // Callback after typing is complete
             });
-        });
-    </script>
-
-
-    <script>
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-
-        // Set dark mode as default
-        document.addEventListener('DOMContentLoaded', function() {
-            const isDarkMode = localStorage.getItem('dark-mode') !== 'false'; // Default to true
-            darkModeToggle.checked = isDarkMode;
-            document.body.classList.toggle('dark-mode', isDarkMode);
-        });
-
-        darkModeToggle.addEventListener('change', function() {
-            document.body.classList.toggle('dark-mode', this.checked);
-            localStorage.setItem('dark-mode', this.checked);
         });
     </script>
 </body>
