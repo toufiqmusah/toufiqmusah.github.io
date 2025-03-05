@@ -38,18 +38,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 20px 30px;
+            padding: 70px 20px 30px;
             background: transparent;
             box-shadow: none;
             z-index: 1000;
             flex-wrap: wrap;
             margin-bottom: 30px;
-            margin-top: 10px;
+            margin-top: 0;
         }
         
         .home-page {
             padding-top: 0;
-            margin-top: -20px;
+            margin-top: -40px;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .floating-dino {
@@ -84,6 +88,25 @@
             height: 100%;
             object-fit: cover;
         }
+        
+        .home-content-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        
+        .brief {
+            margin-right: 20px;
+        }
+        
+        .profile-img img {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .social-links a img {
+            width: 40px;
+            height: 40px;
+        }
     </style>
 </head>
 
@@ -113,36 +136,37 @@
         <section id="home" class="home-page">
             <div class="dot"></div>
 
-            <div class="brief">
-                <h4>🚧🏗️<span style="color: red;">This site is under construction</span></h4>
-                <div class="intro">
-                    <h1>Hi,</h1>
-                    <h2><span class="im">I'm</span> <span class="name">Toufiq Musah</span></h2>
+            <div class="home-content-wrapper">
+                <div class="brief">
+                    <h4>🚧<span style="color: red;">This site is under construction</span></h4>
+                    <div class="intro">
+                        <h1>Hi,</h1>
+                        <h2><span class="im">I'm</span> <span class="name">Toufiq Musah</span></h2>
+                    </div>
+                    <h3>Currently A Biomedical Research Assistant & Engineer at <span style="color: red;">KCCR</span></h3>
+                    <h4><a href="https://kccr-ghana.org/" target="_blank" rel="noopener noreferrer">(Kumasi Centre for
+                            Collaborative Research in Tropical Medicine)</a></h4>
                 </div>
-                <h3>Currently A Biomedical Research Assistant & Engineer at <span style="color: red;">KCCR</span></h3>
-                <h4><a href="https://kccr-ghana.org/" target="_blank" rel="noopener noreferrer">(Kumasi Centre for
-                        Collaborative Research in Tropical Medicine)</a></h4>
-            </div>
 
-            <div class="profile-img">
-                <img src="images/miccai-profile.png" alt="Toufiq Musah Profile Picture" width="200" height="200" style="border-radius: 50%; object-fit: cover;">
+                <div class="profile-img">
+                    <img src="images/miccai-profile.png" alt="Toufiq Musah Profile Picture">
+                </div>
             </div>
 
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/toufiq-musah-913281226/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons8-linkedin.svg" alt="LinkedIn" class="social-icon" width="40" height="40">
+                    <img src="images/icons8-linkedin.svg" alt="LinkedIn">
                     
                 </a>
                 <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons8-github.svg" alt="GitHub" class="social-icon" width="40" height="40">
+                    <img src="images/icons8-github.svg" alt="GitHub">
                     
                 </a>
                 <a href="https://twitter.com/tawfi_tawfi" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons8-twitter-circled.svg" alt="Twitter" class="social-icon" width="40"
-                        height="40">
+                    <img src="images/icons8-twitter-circled.svg" alt="Twitter">
                     
                 <a href="images/toufiq-cv.pdf" target="_blank" rel="noopener noreferrer">
-                    <img src="images/cv-100.png" alt="CV" class="social-icon" width="40" height="40">
+                    <img src="images/cv-100.png" alt="CV">
                 </a>
                     
                 </a>
