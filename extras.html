@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toufiq Musah - Home</title>
+    <title>Extras - Toufiq Musah</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +27,6 @@
         main {
             flex: 1;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .navigation {
@@ -38,18 +35,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 20px 30px;
+            padding: 15px 20px;
             background: transparent;
             box-shadow: none;
             z-index: 1000;
             flex-wrap: wrap;
-            margin-bottom: 30px;
-            margin-top: 10px;
-        }
-        
-        .home-page {
-            padding-top: 0;
-            margin-top: -20px;
+            margin-bottom: 50px;
         }
         
         .floating-dino {
@@ -110,64 +101,38 @@
     </header>
 
     <main class="content">
-        <section id="home" class="home-page">
-            <div class="dot"></div>
-
-            <div class="brief">
-                <h4>🚧🏗️<span style="color: red;">This site is under construction</span></h4>
-                <div class="intro">
-                    <h1>Hi,</h1>
-                    <h2><span class="im">I'm</span> <span class="name">Toufiq Musah</span></h2>
+        <section id="extras">
+            <h2>Extras</h2>
+            <div class="research-category">
+                <h3>Awards & Honors</h3>
+                <div class="research-item">
+                    <h4>Best Oral Presentation</h4>
+                    <p>MICCAI Meets Africa Workshop, 2023</p>
+                    <p>For the paper: "Automated Segmentation of Ischemic Stroke Lesions in Non-Contrast Computed Tomography Images for Enhanced Treatment and Prognosis"</p>
                 </div>
-                <h3>Currently A Biomedical Research Assistant & Engineer at <span style="color: red;">KCCR</span></h3>
-                <h4><a href="https://kccr-ghana.org/" target="_blank" rel="noopener noreferrer">(Kumasi Centre for
-                        Collaborative Research in Tropical Medicine)</a></h4>
+                <div class="research-item">
+                    <h4>Best Poster Presentation</h4>
+                    <p>Ghana Data Science Summit, IndabaX 2024</p>
+                    <p>For the poster: "Explainable Classification of Ischemic And Hemorrhagic Strokes Using Non-contrast Computed Tomography Scans"</p>
+                </div>
             </div>
-
-            <div class="profile-img">
-                <img src="images/miccai-profile.png" alt="Toufiq Musah Profile Picture" width="200" height="200" style="border-radius: 50%; object-fit: cover;">
-            </div>
-
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/toufiq-musah-913281226/" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons8-linkedin.svg" alt="LinkedIn" class="social-icon" width="40" height="40">
-                    
-                </a>
-                <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons8-github.svg" alt="GitHub" class="social-icon" width="40" height="40">
-                    
-                </a>
-                <a href="https://twitter.com/tawfi_tawfi" target="_blank" rel="noopener noreferrer">
-                    <img src="images/icons8-twitter-circled.svg" alt="Twitter" class="social-icon" width="40"
-                        height="40">
-                    
-                <a href="images/toufiq-cv.pdf" target="_blank" rel="noopener noreferrer">
-                    <img src="images/cv-100.png" alt="CV" class="social-icon" width="40" height="40">
-                </a>
-                    
-                </a>
-            </div>
-            <div class="icons-by">
-                <a target="_blank" href="https://icons8.com/icon/80462/github"></a> icons by <a target="_blank"
-                    href="https://icons8.com">Icons8</a>
+            <div class="research-category">
+                <h3>Skills</h3>
+                <div class="research-item">
+                    <h4>Programming Languages</h4>
+                    <p>Python, JavaScript, C++, MATLAB</p>
+                </div>
+                <div class="research-item">
+                    <h4>Frameworks & Libraries</h4>
+                    <p>PyTorch, TensorFlow, Keras, scikit-learn, NumPy, Pandas</p>
+                </div>
+                <div class="research-item">
+                    <h4>Tools & Technologies</h4>
+                    <p>Git, Docker, Linux</p>
+                </div>
             </div>
         </section>
     </main>
-
-    <script>
-        // Add this new function for the typewriter effect
-        function typeWriter(element, text, speed) {
-            let i = 0;
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-    </script>
 </body>
 
 </html>

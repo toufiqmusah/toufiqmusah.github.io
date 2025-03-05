@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs & Talks - Toufiq Musah</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/notion-face.png" width="50" height="50">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        main {
+            flex: 1;
+            width: 100%;
+        }
+        
+        .navigation {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            background: transparent;
+            box-shadow: none;
+            z-index: 1000;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .floating-dino {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .floating-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .floating-icon {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 1000;
+        }
+        
+        .floating-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating elements -->
+    <div class="floating-dino">
+        🦖 <span>focusing</span>
+    </div>
+    <div class="floating-icon">
+        <img src="images/notion-face.png" alt="Icon">
+    </div>
+    
+    <header>
+        <nav class="navigation">
+            <div class="navigation-buttons">
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="window.location.href='research.html'">Research</button>
+                <button onclick="window.location.href='work-experience.html'">Work Experience</button>
+                <button onclick="window.location.href='projects.html'">Projects</button>
+                <button onclick="window.location.href='blogs-talks.html'">Blogs & Talks</button>
+                <button onclick="window.location.href='extras.html'">Extras</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section id="blogs-talks">
+            <h2>Blogs & Talks</h2>
+            <div class="research-category">
+                <h3>Blog Posts</h3>
+                <div class="research-item">
+                    <h4>Introduction to TorchIO for 3D MRI Processing & Preprocessing Transforms (Part 1)</h4>
+                    <p>Published: Medium</p>
+                    <p>A comprehensive guide to using TorchIO for 3D MRI processing and preprocessing transforms.</p>
+                    <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" class="project-link" target="_blank">Read on Medium</a>
+                </div>
+                <div class="research-item">
+                    <h4>How to Make an Image Classification Model: Is It a Cat or a Dog?</h4>
+                    <p>Published: Instructables</p>
+                    <p>A step-by-step tutorial on building an image classification model to distinguish between cats and dogs.</p>
+                    <a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" class="project-link" target="_blank">Read on Instructables</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
