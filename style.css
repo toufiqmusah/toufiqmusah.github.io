@@ -10,6 +10,7 @@ body {
     background-color: #ffffff;
     line-height: 1.6;
     color: #2c3e50;
+    scroll-behavior: smooth;
 }
 
 .home-page {
@@ -25,6 +26,12 @@ body {
     background-color: #ffffff;
     justify-content: center;
     margin-top: -40px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .home-content-wrapper {
@@ -35,7 +42,10 @@ body {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    gap: 30px;
+    gap: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
 }
 
 .brief {
@@ -46,15 +56,21 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: 0 10px;
+    animation: slideInLeft 0.8s ease-in-out;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 .profile-img {
     background: white;
     padding: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     border-radius: 50%;
     transform: rotate(-3deg);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
     width: 220px;
     height: 220px;
     min-width: 220px;
@@ -62,8 +78,14 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    border: 2px solid #f0f0f0;
+    border: 3px solid #f0f0f0;
     overflow: hidden;
+    animation: slideInRight 0.8s ease-in-out;
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px) rotate(-3deg); }
+    to { opacity: 1; transform: translateX(0) rotate(-3deg); }
 }
 
 .dot {
@@ -85,31 +107,45 @@ body {
     flex-wrap: wrap;
     margin-bottom: 30px;
     margin-top: 0;
+    width: 100%;
 }
 
 .navigation-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
+    padding: 10px 15px;
+    background-color: rgba(245, 245, 245, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.navigation-buttons:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .navigation-buttons button {
-    background-color: #f5f5f5;
+    background-color: transparent;
     border: none;
-    border-radius: 5px;
-    padding: 8px 15px;
+    border-radius: 8px;
+    padding: 10px 18px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    color: #2c3e50;
 }
 
 .navigation button {
-    padding: 8px 12px;
+    padding: 10px 16px;
     font-size: 15px;
     font-weight: 700;
     border: none;
-    border-radius: 0;
+    border-radius: 8px;
     background: transparent;
     color: #2c3e50;
     cursor: pointer;
@@ -117,6 +153,24 @@ body {
     box-shadow: none;
     white-space: nowrap;
     position: relative;
+    overflow: hidden;
+}
+
+.navigation button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(52, 152, 219, 0.1);
+    transition: all 0.3s ease;
+    z-index: -1;
+    border-radius: 8px;
+}
+
+.navigation button:hover::before {
+    left: 0;
 }
 
 .navigation button::after {
@@ -137,15 +191,25 @@ body {
 .navigation button:hover {
     background: transparent;
     color: #3498db;
+    transform: translateY(-2px);
+}
+
+.navigation button.active {
+    color: #3498db;
+}
+
+.navigation button.active::after {
+    width: 100%;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 50px;
     flex-wrap: wrap;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 100px;
+    animation: fadeIn 1s ease-in-out 0.3s both;
 }
 
 .social-links a {
@@ -155,15 +219,27 @@ body {
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
     background-color: transparent;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .social-links a:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
     color: #3498db;
+}
+
+.social-links a img {
+    width: 140px;
+    height: 140px;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover img {
+    transform: scale(1.1);
 }
 
 .profile-img img {
@@ -171,12 +247,12 @@ body {
     width: 200px;
     height: 200px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .profile-img:hover {
     transform: rotate(0deg);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .profile-img:hover img {
@@ -194,6 +270,7 @@ body {
     font-size: clamp(1.8em, 7vw, 3em);
     font-weight: 700;
     color: #2c3e50;
+    margin-bottom: 5px;
 }
 
 .brief h2 {
@@ -856,35 +933,39 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 24px;
     display: flex;
     align-items: center;
-    animation: float 3s ease-in-out infinite;
     z-index: 1000;
+    background-color: rgba(245, 245, 245, 0.9);
+    padding: 8px 15px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
 }
 
-.floating-dino span {
-    margin-left: 10px;
-    font-weight: 600;
-    font-size: 18px;
+.floating-dino:hover {
+    transform: translateY(3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Floating icon at top left - fixed position */
 .floating-icon {
     position: fixed;
     top: 20px;
     left: 30px;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     animation: float 3s ease-in-out infinite;
     animation-delay: 1.5s;
-    z-index: 1000;
 }
 
-.floating-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.floating-icon:hover {
+    transform: rotate(10deg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Float animation */
@@ -900,71 +981,203 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Media queries for responsive design */
-@media screen and (max-width: 768px) {
-    .navigation {
-        padding-top: 90px; /* Even more padding on mobile */
-    }
-    
-    .floating-dino, .floating-icon {
-        transform: scale(0.9); /* Slightly smaller on mobile */
-    }
-    
-    .floating-dino {
-        top: 15px;
-        right: 15px;
-    }
-    
-    .floating-icon {
-        top: 15px;
-        left: 15px;
-    }
-    
-    .home-page {
-        margin-top: -30px; /* Less negative margin on mobile */
-    }
-    
-    /* Stack the content vertically on mobile */
+@keyframes slideInTop {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.icons-by {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.intro {
+    margin-bottom: 15px;
+}
+
+.name {
+    color: #3498db;
+    position: relative;
+    display: inline-block;
+}
+
+.name::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #3498db;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+}
+
+.name:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Add responsive styling */
+@media (max-width: 768px) {
     .home-content-wrapper {
-        flex-direction: column-reverse; /* Profile image on top, brief below */
+        flex-direction: column-reverse;
+        text-align: center;
         gap: 20px;
     }
     
     .brief {
-        text-align: center; /* Center text on mobile */
-        margin-top: 20px;
+        text-align: center;
+        padding: 0;
+    }
+    
+    .navigation-buttons {
+        padding: 8px 10px;
+    }
+    
+    .navigation button {
+        padding: 8px 12px;
+        font-size: 14px;
     }
     
     .profile-img {
-        margin: 0 auto; /* Center the profile image */
-        width: 180px; /* Slightly smaller on mobile */
-        height: 180px;
-        min-width: 180px;
+        margin-bottom: 20px;
     }
     
-    .profile-img img {
-        width: 160px;
-        height: 160px;
+    .social-links {
+        margin-top: 70px;
+        gap: 30px;
+    }
+    
+    .social-links a img {
+        width: 112px;
+        height: 112px;
     }
 }
 
-@media screen and (max-width: 480px) {
-    .navigation {
-        padding-top: 100px; /* Even more padding on small mobile */
-    }
-    
-    .floating-dino span {
-        font-size: 16px; /* Smaller text on mobile */
-    }
-    
-    .profile-img {
-        width: 160px; /* Even smaller on small mobile */
-        height: 160px;
-        min-width: 160px;
-    }
-    
-    .profile-img img {
-        width: 140px;
-        height: 140px;
-    }
+/* Dark mode toggle button */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(30deg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle i {
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .home-page,
+body.dark-mode #work-experience, 
+body.dark-mode #projects, 
+body.dark-mode #blogs-talks, 
+body.dark-mode #extras,
+body.dark-mode #research {
+    background-color: #121212;
+}
+
+body.dark-mode .navigation-buttons {
+    background-color: rgba(40, 40, 40, 0.85);
+}
+
+body.dark-mode .navigation button {
+    color: #e0e0e0;
+}
+
+body.dark-mode .navigation button:hover,
+body.dark-mode .navigation button.active {
+    color: #64b5f6;
+}
+
+body.dark-mode .navigation button::after {
+    background-color: #64b5f6;
+}
+
+body.dark-mode .brief h1,
+body.dark-mode .brief h2,
+body.dark-mode .brief h3,
+body.dark-mode .brief h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .name {
+    color: #64b5f6;
+}
+
+body.dark-mode .name::after {
+    background-color: #64b5f6;
+}
+
+body.dark-mode .social-links a {
+    background-color: rgba(60, 60, 60, 0.5);
+    color: #e0e0e0;
+}
+
+body.dark-mode .social-links a:hover {
+    color: #64b5f6;
+}
+
+body.dark-mode .profile-img {
+    background: #1e1e1e;
+    border-color: #333;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .floating-dino,
+body.dark-mode .theme-toggle {
+    background-color: rgba(40, 40, 40, 0.9);
+    color: #e0e0e0;
+}
+
+body.dark-mode .theme-toggle i {
+    color: #e0e0e0;
+}
+
+body.dark-mode .icons-by,
+body.dark-mode .icons-by a {
+    color: #999;
+}
+
+body.dark-mode a {
+    color: #64b5f6;
+}
+
+body.dark-mode a:hover {
+    color: #90caf9;
+}
+
+/* Dark mode transition */
+body, body.dark-mode, 
+.navigation-buttons, .navigation button, 
+.profile-img, .social-links a, 
+.floating-dino, .theme-toggle,
+.brief h1, .brief h2, .brief h3, .brief h4,
+.name, a {
+    transition: all 0.3s ease;
 }
