@@ -1082,34 +1082,22 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     top: 20px;
     right: 30px;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #f0f0f0;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
-    user-select: none;
-    border: none;
-    outline: none;
 }
 
 .theme-toggle:hover {
-    transform: rotate(30deg);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.theme-toggle:active {
-    transform: scale(0.8);
-    background-color: #e0e0e0;
-}
-
-.theme-toggle.clicked {
-    animation: pulse 0.5s ease;
+    transform: scale(1.1);
 }
 
 @keyframes pulse {
@@ -1119,9 +1107,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .theme-toggle i {
-    font-size: 22px;
+    font-size: 20px;
     color: #333;
+    transition: all 0.3s ease;
     pointer-events: none; /* This ensures clicks pass through to the parent */
+}
+
+body.dark-mode .theme-toggle {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .theme-toggle i {
+    color: #f0f0f0;
+}
+
+body, body.dark-mode, 
+.navigation-buttons, .navigation button, 
+.profile-img, .social-links a, 
+.floating-dino, .theme-toggle,
+.brief h1, .brief h2, .brief h3, .brief h4,
+.name, a {
+    transition: all 0.3s ease;
+}
+
+.floating-dino span {
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 /* Dark mode styles */
@@ -1197,14 +1209,8 @@ body.dark-mode .profile-img {
 }
 
 body.dark-mode .floating-dino,
-body.dark-mode .theme-toggle,
 body.dark-mode .nav-dino {
     background-color: #1e1e1e;
-    color: #e0e0e0;
-    transition: all 0.3s ease;
-}
-
-body.dark-mode .theme-toggle i {
     color: #e0e0e0;
     transition: all 0.3s ease;
 }
@@ -1225,17 +1231,6 @@ body.dark-mode a:hover {
     transition: all 0.3s ease;
 }
 
-body, body.dark-mode, 
-.navigation-buttons, .navigation button, 
-.profile-img, .social-links a, 
-.floating-dino, .theme-toggle,
-.brief h1, .brief h2, .brief h3, .brief h4,
-.name, a {
-    transition: all 0.3s ease;
-}
-
-.floating-dino span {
-    margin-left: 10px;
-    font-weight: 600;
-    font-size: 18px;
+body.dark-mode .theme-toggle i {
+    color: #f0f0f0;
 }

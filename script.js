@@ -64,41 +64,67 @@ function initDarkMode() {
     // Create the new dark mode button
     const darkModeButton = document.createElement('button');
     darkModeButton.id = 'darkModeButton';
+    darkModeButton.className = 'theme-toggle';
     darkModeButton.style.position = 'fixed';
     darkModeButton.style.top = '20px';
     darkModeButton.style.right = '30px';
-    darkModeButton.style.padding = '10px 15px';
-    darkModeButton.style.backgroundColor = '#333';
-    darkModeButton.style.color = 'white';
+    darkModeButton.style.width = '40px';
+    darkModeButton.style.height = '40px';
+    darkModeButton.style.borderRadius = '50%';
+    darkModeButton.style.backgroundColor = '#f0f0f0';
     darkModeButton.style.border = 'none';
-    darkModeButton.style.borderRadius = '5px';
+    darkModeButton.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
     darkModeButton.style.cursor = 'pointer';
     darkModeButton.style.zIndex = '1000';
-    darkModeButton.style.fontWeight = 'bold';
-    darkModeButton.style.fontSize = '14px';
-    darkModeButton.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    darkModeButton.style.display = 'flex';
+    darkModeButton.style.alignItems = 'center';
+    darkModeButton.style.justifyContent = 'center';
     darkModeButton.style.transition = 'all 0.3s ease';
+    darkModeButton.title = 'Toggle Dark/Light Mode';
+    
+    // Create icon
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-moon';
+    icon.style.fontSize = '20px';
+    icon.style.color = '#333';
+    icon.style.transition = 'all 0.3s ease';
     
     // Check if dark mode is saved in localStorage
     const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
     
-    // Set initial text and apply dark mode if needed
-    darkModeButton.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
-    
+    // Set initial state
     if (isDarkMode) {
         document.body.classList.add('dark-mode');
-        darkModeButton.style.backgroundColor = '#121212';
+        darkModeButton.style.backgroundColor = '#1e1e1e';
+        icon.className = 'fas fa-sun';
+        icon.style.color = '#f0f0f0';
     }
+    
+    // Add icon to button
+    darkModeButton.appendChild(icon);
     
     // Add click event
     darkModeButton.onclick = function() {
+        // Add pulse animation
+        this.style.animation = 'none';
+        this.offsetHeight; // Trigger reflow
+        this.style.animation = 'pulse 0.5s ease';
+        
         // Toggle dark mode
         document.body.classList.toggle('dark-mode');
         
-        // Update button text and style based on current state
+        // Update button style based on current state
         const isDarkMode = document.body.classList.contains('dark-mode');
-        this.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
-        this.style.backgroundColor = isDarkMode ? '#121212' : '#333';
+        
+        if (isDarkMode) {
+            this.style.backgroundColor = '#1e1e1e';
+            icon.className = 'fas fa-sun';
+            icon.style.color = '#f0f0f0';
+        } else {
+            this.style.backgroundColor = '#f0f0f0';
+            icon.className = 'fas fa-moon';
+            icon.style.color = '#333';
+        }
         
         // Save preference to localStorage
         localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');

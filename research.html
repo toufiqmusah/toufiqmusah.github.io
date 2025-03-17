@@ -94,9 +94,6 @@
 
 <body>
     <!-- Floating elements -->
-    <div class="theme-toggle" title="Toggle Dark/Light Mode" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i>
-    </div>
     <div class="floating-icon">
         <img src="images/notion-face.png" alt="Icon">
     </div>
@@ -189,7 +186,21 @@
     </div>
     
     <script src="script.js"></script>
-    <script src="darkmode.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add active class to current page nav button
+            const currentPage = window.location.pathname.split('/').pop();
+            const navButtons = document.querySelectorAll('.navigation-buttons button');
+            
+            navButtons.forEach(button => {
+                const buttonUrl = button.getAttribute('onclick').match(/href='([^']*)'/) || 
+                                button.getAttribute('onclick').match(/href="([^"]*)"/);
+                if (buttonUrl && buttonUrl[1].includes(currentPage)) {
+                    button.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toufiq Musah</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dark-mode.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -193,45 +192,16 @@
     </div>
     
     <script src="script.js"></script>
-    <script src="standalone-dark.js"></script>
     <script>
-        // Apply saved theme on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('darkMode') === 'enabled') {
-                document.body.classList.add('dark-mode');
-                document.querySelector('#themeToggle i').className = 'fas fa-sun';
-            }
-            
-            // Add direct test button
-            const testButton = document.createElement('button');
-            testButton.style.position = 'fixed';
-            testButton.style.top = '80px';
-            testButton.style.right = '30px';
-            testButton.style.padding = '10px 20px';
-            testButton.style.backgroundColor = '#ff0000';
-            testButton.style.color = 'white';
-            testButton.style.border = 'none';
-            testButton.style.borderRadius = '5px';
-            testButton.style.cursor = 'pointer';
-            testButton.style.zIndex = '1000';
-            testButton.textContent = 'Test Dark Mode';
-            testButton.onclick = function() {
-                document.body.classList.toggle('dark-mode');
-                console.log('Dark mode toggled via test button');
-                console.log('Body has dark-mode class:', document.body.classList.contains('dark-mode'));
-                this.textContent = document.body.classList.contains('dark-mode') ? 'Test Light Mode' : 'Test Dark Mode';
-            };
-            document.body.appendChild(testButton);
-        });
-        
         // Add active class to current page nav button
         document.addEventListener('DOMContentLoaded', function() {
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const navButtons = document.querySelectorAll('.navigation-buttons button');
             
-            navButtons.forEach(button => {
-                const buttonUrl = button.getAttribute('onclick').match(/href='([^']*)'/) || 
-                                button.getAttribute('onclick').match(/href="([^"]*)"/); 
+            // Add active class to current page nav button
+            document.querySelectorAll('.navigation-buttons button').forEach(button => {
+                const buttonUrl = button.getAttribute('onclick')?.match(/href='([^']*)'/) || 
+                                button.getAttribute('onclick')?.match(/href="([^"]*)"/);
+                
                 if (buttonUrl && buttonUrl[1].includes(currentPage)) {
                     button.classList.add('active');
                 }
