@@ -44,17 +44,13 @@
             margin-top: 0;
         }
         
-        .floating-dino {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            font-size: 24px;
+        .nav-dino {
             display: flex;
             align-items: center;
-            z-index: 1000;
+            font-size: 20px;
         }
         
-        .floating-dino span {
+        .nav-dino span {
             margin-left: 10px;
             font-weight: 600;
             font-size: 18px;
@@ -76,13 +72,29 @@
             height: 100%;
             object-fit: cover;
         }
+        
+        .floating-dino {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .floating-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
     </style>
 </head>
 
 <body>
     <!-- Floating elements -->
-    <div class="floating-dino">
-        🦖 <span>focusing</span>
+    <div class="theme-toggle" title="Toggle Dark/Light Mode" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
     </div>
     <div class="floating-icon">
         <img src="images/notion-face.png" alt="Icon">
@@ -97,6 +109,9 @@
                 <button onclick="window.location.href='projects.html'">Projects</button>
                 <button onclick="window.location.href='blogs-talks.html'">Blogs & Talks</button>
                 <button onclick="window.location.href='extras.html'">Extras</button>
+            </div>
+            <div class="nav-dino">
+                🦖 <span>focusing</span>
             </div>
         </nav>
     </header>
@@ -187,6 +202,13 @@
             </div>
         </section>
     </main>
+    
+    <div class="floating-dino">
+        🦖 <span>focusing</span>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="darkmode.js"></script>
 </body>
 
 </html>

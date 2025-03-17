@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Dark Mode Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+            color: black;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .toggle-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .toggle-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .toggle-btn:active {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Dark Mode Test</h1>
+        <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <p>Click the button above to toggle between light and dark mode.</p>
+        <p>Current mode: <span id="mode-text">Light Mode</span></p>
+    </div>
+    
+    <script>
+        function toggleDarkMode() {
+            // Toggle dark mode class
+            document.body.classList.toggle('dark-mode');
+            
+            // Update text
+            const modeText = document.getElementById('mode-text');
+            if (document.body.classList.contains('dark-mode')) {
+                modeText.textContent = 'Dark Mode';
+            } else {
+                modeText.textContent = 'Light Mode';
+            }
+        }
+    </script>
+</body>
+</html>

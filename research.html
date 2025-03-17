@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="images/notion-face.png" width="50" height="50">
     <style>
         body {
@@ -44,17 +45,13 @@
             margin-top: 0;
         }
         
-        .floating-dino {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            font-size: 24px;
+        .nav-dino {
             display: flex;
             align-items: center;
-            z-index: 1000;
+            font-size: 20px;
         }
         
-        .floating-dino span {
+        .nav-dino span {
             margin-left: 10px;
             font-weight: 600;
             font-size: 18px;
@@ -76,13 +73,29 @@
             height: 100%;
             object-fit: cover;
         }
+        
+        .floating-dino {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .floating-dino span {
+            margin-left: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
     </style>
 </head>
 
 <body>
     <!-- Floating elements -->
-    <div class="floating-dino">
-        🦖 <span>focusing</span>
+    <div class="theme-toggle" title="Toggle Dark/Light Mode" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
     </div>
     <div class="floating-icon">
         <img src="images/notion-face.png" alt="Icon">
@@ -97,6 +110,9 @@
                 <button onclick="window.location.href='projects.html'">Projects</button>
                 <button onclick="window.location.href='blogs-talks.html'">Blogs & Talks</button>
                 <button onclick="window.location.href='extras.html'">Extras</button>
+            </div>
+            <div class="nav-dino">
+                🦖 <span>focusing</span>
             </div>
         </nav>
     </header>
@@ -167,6 +183,13 @@
             </div>
         </section>
     </main>
+    
+    <div class="floating-dino">
+        🦖 <span>focusing</span>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="darkmode.js"></script>
 </body>
 
 </html>

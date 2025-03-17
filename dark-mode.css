@@ -1,0 +1,83 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .home-page,
+body.dark-mode #work-experience, 
+body.dark-mode #projects, 
+body.dark-mode #blogs-talks, 
+body.dark-mode #extras,
+body.dark-mode #research {
+    background-color: #121212 !important;
+}
+
+body.dark-mode .navigation-buttons {
+    background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navigation button {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .navigation button:hover,
+body.dark-mode .navigation button.active {
+    color: #ffffff !important;
+}
+
+body.dark-mode .navigation button::after {
+    background-color: #ffffff !important;
+}
+
+body.dark-mode .brief h1,
+body.dark-mode .brief h2,
+body.dark-mode .brief h3,
+body.dark-mode .brief h4 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .name {
+    color: #ffffff !important;
+}
+
+body.dark-mode .name::after {
+    background-color: #ffffff !important;
+}
+
+body.dark-mode .social-links a {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .social-links a:hover {
+    background-color: #2a2a2a !important;
+}
+
+body.dark-mode .profile-img {
+    border: 4px solid #1e1e1e !important;
+}
+
+body.dark-mode .floating-dino,
+body.dark-mode .theme-toggle,
+body.dark-mode .nav-dino {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .theme-toggle i {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .icons-by,
+body.dark-mode .icons-by a {
+    color: #a0a0a0 !important;
+}
+
+body.dark-mode a {
+    color: #4dabf7 !important;
+}
+
+body.dark-mode a:hover {
+    color: #74c0fc !important;
+}

@@ -28,10 +28,8 @@ function showPage(pageId) {
     window.scrollTo(0, 0);
 }
 
-// Show home page by default when the page loads
+// Document ready function
 document.addEventListener('DOMContentLoaded', function() {
-    showPage('home');
-    
     // Initialize dark mode
     initDarkMode();
     
@@ -40,35 +38,78 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add hover effects to navigation buttons
     addNavHoverEffects();
+    
+    // Add click event to floating dinosaur
+    initFloatingDino();
 });
+
+// Initialize floating dinosaur functionality
+function initFloatingDino() {
+    const floatingDinos = document.querySelectorAll('.floating-dino');
+    floatingDinos.forEach(dino => {
+        dino.addEventListener('click', () => {
+            alert('Focus mode activated! 🦖');
+        });
+    });
+}
 
 // Dark mode functionality
 function initDarkMode() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
-    const storedTheme = localStorage.getItem('theme') || 'light';
-    
-    // Apply stored theme on load
-    if (storedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
+    // Remove the old theme toggle button if it exists
+    const oldToggle = document.querySelector('.theme-toggle');
+    if (oldToggle) {
+        oldToggle.remove();
     }
     
-    // Toggle theme on click
-    themeToggle.addEventListener('click', () => {
+    // Create the new dark mode button
+    const darkModeButton = document.createElement('button');
+    darkModeButton.id = 'darkModeButton';
+    darkModeButton.style.position = 'fixed';
+    darkModeButton.style.top = '20px';
+    darkModeButton.style.right = '30px';
+    darkModeButton.style.padding = '10px 15px';
+    darkModeButton.style.backgroundColor = '#333';
+    darkModeButton.style.color = 'white';
+    darkModeButton.style.border = 'none';
+    darkModeButton.style.borderRadius = '5px';
+    darkModeButton.style.cursor = 'pointer';
+    darkModeButton.style.zIndex = '1000';
+    darkModeButton.style.fontWeight = 'bold';
+    darkModeButton.style.fontSize = '14px';
+    darkModeButton.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    darkModeButton.style.transition = 'all 0.3s ease';
+    
+    // Check if dark mode is saved in localStorage
+    const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+    
+    // Set initial text and apply dark mode if needed
+    darkModeButton.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+    
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        darkModeButton.style.backgroundColor = '#121212';
+    }
+    
+    // Add click event
+    darkModeButton.onclick = function() {
+        // Toggle dark mode
         document.body.classList.toggle('dark-mode');
         
-        if (document.body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        } else {
-            localStorage.setItem('theme', 'light');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-        }
-    });
+        // Update button text and style based on current state
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        this.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+        this.style.backgroundColor = isDarkMode ? '#121212' : '#333';
+        
+        // Save preference to localStorage
+        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        
+        console.log('Dark mode toggled:', isDarkMode);
+    };
+    
+    // Add button to the body
+    document.body.appendChild(darkModeButton);
+    
+    console.log('Dark mode button initialized');
 }
 
 // Add smooth scrolling for anchor links

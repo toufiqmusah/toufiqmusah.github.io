@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+            color: black;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        .btn:active {
+            background-color: yellow;
+        }
+        
+        #output {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+            min-height: 100px;
+        }
+        
+        body.dark-mode #output {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dark Mode Debug</h1>
+        
+        <div class="button-group">
+            <button class="btn" onclick="addDarkModeClass()">Add dark-mode class</button>
+            <button class="btn" onclick="removeDarkModeClass()">Remove dark-mode class</button>
+            <button class="btn" onclick="toggleDarkModeClass()">Toggle dark-mode class</button>
+            <button class="btn" onclick="checkDarkModeClass()">Check dark-mode class</button>
+        </div>
+        
+        <p>Current class list: <code id="classList"></code></p>
+        <p>Has dark-mode class: <code id="hasDarkMode"></code></p>
+        
+        <div id="output"></div>
+    </div>
+    
+    <script>
+        // Update info
+        function updateInfo() {
+            document.getElementById('classList').textContent = document.body.className;
+            document.getElementById('hasDarkMode').textContent = document.body.classList.contains('dark-mode');
+        }
+        
+        // Add dark-mode class
+        function addDarkModeClass() {
+            document.body.classList.add('dark-mode');
+            log('Added dark-mode class');
+            updateInfo();
+        }
+        
+        // Remove dark-mode class
+        function removeDarkModeClass() {
+            document.body.classList.remove('dark-mode');
+            log('Removed dark-mode class');
+            updateInfo();
+        }
+        
+        // Toggle dark-mode class
+        function toggleDarkModeClass() {
+            document.body.classList.toggle('dark-mode');
+            log('Toggled dark-mode class');
+            updateInfo();
+        }
+        
+        // Check dark-mode class
+        function checkDarkModeClass() {
+            const hasDarkMode = document.body.classList.contains('dark-mode');
+            log('Has dark-mode class: ' + hasDarkMode);
+            updateInfo();
+        }
+        
+        // Log function
+        function log(message) {
+            const output = document.getElementById('output');
+            const time = new Date().toLocaleTimeString();
+            output.innerHTML += `<div>[${time}] ${message}</div>`;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateInfo();
+            log('Page loaded');
+        });
+    </script>
+</body>
+</html>

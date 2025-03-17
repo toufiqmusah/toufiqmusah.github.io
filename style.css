@@ -928,8 +928,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Floating dinosaur emoji with text - fixed position */
 .floating-dino {
     position: fixed;
-    top: 20px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     font-size: 24px;
     display: flex;
     align-items: center;
@@ -966,6 +966,24 @@ h1, h2, h3, h4, h5, h6 {
 .floating-icon:hover {
     transform: rotate(10deg);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation dinosaur */
+.nav-dino {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    background-color: rgba(245, 245, 245, 0.9);
+    padding: 8px 15px;
+    border-radius: 30px;
+    margin-left: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-dino span {
+    margin-left: 8px;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 /* Float animation */
@@ -1062,8 +1080,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Dark mode toggle button */
 .theme-toggle {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 20px;
+    right: 30px;
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -1075,6 +1093,9 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1000;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    user-select: none;
+    border: none;
+    outline: none;
 }
 
 .theme-toggle:hover {
@@ -1082,15 +1103,32 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
+.theme-toggle:active {
+    transform: scale(0.8);
+    background-color: #e0e0e0;
+}
+
+.theme-toggle.clicked {
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); background-color: #ffd700; }
+    100% { transform: scale(1); }
+}
+
 .theme-toggle i {
-    font-size: 20px;
-    color: #2c3e50;
+    font-size: 22px;
+    color: #333;
+    pointer-events: none; /* This ensures clicks pass through to the parent */
 }
 
 /* Dark mode styles */
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .home-page,
@@ -1100,79 +1138,93 @@ body.dark-mode #blogs-talks,
 body.dark-mode #extras,
 body.dark-mode #research {
     background-color: #121212;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .navigation-buttons {
-    background-color: rgba(40, 40, 40, 0.85);
+    background-color: #1e1e1e;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .navigation button {
     color: #e0e0e0;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .navigation button:hover,
 body.dark-mode .navigation button.active {
-    color: #64b5f6;
+    color: #ffffff;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .navigation button::after {
-    background-color: #64b5f6;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .brief h1,
 body.dark-mode .brief h2,
 body.dark-mode .brief h3,
 body.dark-mode .brief h4 {
-    color: #e0e0e0;
+    color: #ffffff;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .name {
-    color: #64b5f6;
+    color: #ffffff;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .name::after {
-    background-color: #64b5f6;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .social-links a {
-    background-color: rgba(60, 60, 60, 0.5);
+    background-color: #1e1e1e;
     color: #e0e0e0;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .social-links a:hover {
-    color: #64b5f6;
+    background-color: #2a2a2a;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .profile-img {
-    background: #1e1e1e;
-    border-color: #333;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 4px solid #1e1e1e;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .floating-dino,
-body.dark-mode .theme-toggle {
-    background-color: rgba(40, 40, 40, 0.9);
+body.dark-mode .theme-toggle,
+body.dark-mode .nav-dino {
+    background-color: #1e1e1e;
     color: #e0e0e0;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .theme-toggle i {
     color: #e0e0e0;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .icons-by,
 body.dark-mode .icons-by a {
-    color: #999;
+    color: #a0a0a0;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode a {
-    color: #64b5f6;
+    color: #4dabf7;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode a:hover {
-    color: #90caf9;
+    color: #74c0fc;
+    transition: all 0.3s ease;
 }
 
-/* Dark mode transition */
 body, body.dark-mode, 
 .navigation-buttons, .navigation button, 
 .profile-img, .social-links a, 
@@ -1180,4 +1232,10 @@ body, body.dark-mode,
 .brief h1, .brief h2, .brief h3, .brief h4,
 .name, a {
     transition: all 0.3s ease;
+}
+
+.floating-dino span {
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 18px;
 }
