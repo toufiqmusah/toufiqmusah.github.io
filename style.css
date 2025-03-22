@@ -307,6 +307,7 @@ body {
     margin-bottom: 25px;
     box-shadow: none;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .research-item:hover {
@@ -1014,4 +1015,67 @@ body.dark-mode a:hover {
 
 body.dark-mode .theme-toggle i {
     color: #f0f0f0;
+}
+
+/* Award styles */
+.award-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+}
+
+.award-icon {
+    width: 30px; /* 40% smaller than default size */
+    height: 30px; /* 40% smaller than default size */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.award-icon:hover {
+    transform: scale(1.1);
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 180px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -90px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+.award-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Dark mode tooltip */
+body.dark-mode .tooltip {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #121212;
+}
+
+body.dark-mode .tooltip::after {
+    border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent;
 }
