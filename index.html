@@ -95,6 +95,22 @@
         .paper-details a {color: var(--accent-primary); text-decoration: none; transition: color 0.3s;}
         .paper-details a:hover {color: var(--accent-hover);}
 
+        /* Projects */
+        #projects {padding: 6rem 4rem; max-width: 900px; margin: auto; background: var(--bg-primary); transition: background-color 0.3s ease;}
+        #projects h2 {font-size: 2rem; margin-bottom: 3rem; color: var(--accent-hover);}
+        .projects-timeline {position: relative; padding-left: 2rem;}
+        .projects-timeline::before {content: ''; position: absolute; left: -7px; top: 0; bottom: 0; width: 2px; background: var(--border-color);}
+        .project-item {margin-bottom: 2rem; position: relative; cursor: pointer;}
+        .project-item::before {content: ''; position: absolute; left: -46.5px; top: 0.25rem; width: 12px; height: 12px; background: var(--accent-primary); border-radius: 50%; border: 3px solid var(--bg-primary);}
+        .project-header {display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;}
+        .project-header h3 {font-size: 1.15rem; font-weight: 600; color: var(--text-primary); transition: color 0.3s;}
+        .project-item:hover .project-header h3 {color: var(--accent-primary);}
+        .project-toggle {font-size: 1.2rem; color: var(--accent-primary); transition: transform 0.3s; flex-shrink: 0;}
+        .project-item.expanded .project-toggle {transform: rotate(180deg);}
+        .project-desc {max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.3s ease, opacity 0.3s ease; margin-top: 0.75rem; padding-right: 1rem;}
+        .project-item.expanded .project-desc {max-height: 300px; opacity: 1;}
+        .project-desc p {font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary);}
+
         /* Lightbox */
         .lightbox {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; justify-content: center; align-items: center; cursor: pointer;}
         .lightbox.active {display: flex;}
@@ -102,7 +118,9 @@
 
         /* Education */
         .education-item {margin-bottom: 1rem;}
-        .education-item h3 {font-size: 1.1rem; margin-bottom: 0.3rem;}
+        .education-item h3 {font-size: 1.1rem; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.5rem;}
+        .education-item .school-logo {width: 32px; height: 32px; object-fit: contain; border-radius: 4px; flex-shrink: 0;}
+        .education-item small {display: block; font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.3rem;}
         .education-item p {font-size: 1rem; opacity: 0.9;}
 
         /* Experience */
@@ -112,7 +130,7 @@
         .experience-info h3 {font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem;}
         .experience-info p {font-size: 0.95rem; opacity: 0.9;}
 
-    /* Talks & Tutorials */
+        /* Talks & Tutorials */
     #talks {padding: 6rem 4rem; max-width: 1100px; margin: auto; background: var(--bg-secondary); transition: background-color 0.3s ease;}
     /* Two-column layout: left = talks, right = tutorials */
     .talks-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;}
@@ -155,8 +173,8 @@
         <ul class="nav-links">
             <li><a href="#bio">Bio</a></li>
             <li><a href="#papers">Papers</a></li>
-            <li><a href="#talks">Talks</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#talks">Talks</a></li>
             <li>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                     <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -256,11 +274,13 @@
                     <div class="info-section">
                         <h2>Education</h2>
                         <div class="education-item">
-                            <h3>BSc Biomedical Engineering</h3> <small>Jan 2021 - Nov 2024</small>
+                            <h3><img src="assets/knust.png" alt="KNUST logo" class="school-logo">BSc Biomedical Engineering</h3>
+                            <small>Jan 2021 - Nov 2024</small>
                             <p>Kwame Nkrumah University of Science and Technology (KNUST)</p>
                         </div>
                         <div class="education-item">
-                            <h3>MSE Data Science</h3> <small>Aug 2025 - Present</small>
+                            <h3><img src="assets/upenn.png" alt="UPenn logo" class="school-logo">MSE Data Science</h3>
+                            <small>Aug 2025 - Present</small>
                             <p>University of Pennsylvania (UPenn)</p>
                         </div>
                     </div>
@@ -338,6 +358,61 @@
                 <h3>Brain Tumor Segmentation in Sub-Sahara Africa with Advanced Transformer and ConvNet Methods: Fine-Tuning, Data Mixing and Ensembling</h3>
                 <p><strong>Toufiq Musah</strong>, C Amoako-Atta, JA Otu, LE Ismaila, SA Suraka, O Williams, ... Medical Image Computing in Resource Constrained Settings Workshop. 28th International MICCAI Conference, (2025), arXiv:2508.10905.</p>
                 <a href="https://arxiv.org/abs/2508.10905" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-timeline">
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>MedSegMNIST</h3>
+                    <span class="project-toggle">+</span>
+                </div>
+                <div class="project-desc">
+                    <p>A Python library for easy access to 2D and 3D Medical Image Segmentation datasets provided in varying resolutions and sizes, designed for benchmarking and learning purposes.</p>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>Multi-Omic Data Integration for Head and Neck Tumor Prognostication</h3>
+                    <span class="project-toggle">+</span>
+                </div>
+                <div class="project-desc">
+                    <p>Multimodal learning framework to predict 5-year survivability and recurrence rates. Integrated whole-slide image features from CLAM with structured clinical data, laboratory analytes, surgical notes, and patient history. Used ClinicalBERT for text embeddings and low-rank bilinear fusion, achieving an AUC of 0.75 across tasks.</p>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>Vision-Language Surgical Scene Understanding & Panoptic Segmentation</h3>
+                    <span class="project-toggle">+</span>
+                </div>
+                <div class="project-desc">
+                    <p>End-to-end system integrating surgical video data and panoptic segmentations for automated operating room scene understanding. Trained S2-Scaled SwinUNETR for panoptic segmentation across 21 classes. Fine-tuned MedGemma using QLoRA for scene graph generation and event significance detection.</p>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>Collaborative AI Resources for Expectant Mothers (C.A.R.E)</h3>
+                    <span class="project-toggle">+</span>
+                </div>
+                <div class="project-desc">
+                    <p>Accessible AI assistant built on Large Language Models with Retrieval-Augmented Generation to help expectant mothers with gestational diabetes. Deployed through WhatsApp for inclusivity and ease of access, providing personalized health guidance in low-resource settings.</p>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <h3>Generative AI for Medical Imaging Enhancement and Data Augmentation</h3>
+                    <span class="project-toggle">+</span>
+                </div>
+                <div class="project-desc">
+                    <p>Developed generative models to improve medical imaging quality and data efficiency. Super-resolution and denoising framework for high-resolution head CT scans from low-resolution variants, reducing radiation exposure. Implemented Deep Convolutional GANs for synthetic medical image generation for self-supervised pre-training and data-efficient fine-tuning.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -451,6 +526,19 @@
         // Close lightbox when clicking anywhere on it
         lightbox.addEventListener('click', function() {
             lightbox.classList.remove('active');
+        });
+
+        // Project expand/collapse
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // Close all other projects
+                document.querySelectorAll('.project-item').forEach(otherItem => {
+                    if (otherItem !== this) otherItem.classList.remove('expanded');
+                });
+                // Toggle current project
+                this.classList.toggle('expanded');
+            });
         });
 
         // Dark mode toggle
