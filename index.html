@@ -101,7 +101,9 @@
         .lightbox img {max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px;}
 
         /* Education */
-        .education-item {margin-bottom: 1rem;}
+        .education-item {margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;}
+        .education-item img.edu-logo {width: 70px; height: 70px; border-radius: 14px; object-fit: contain; padding: 0.35rem; box-shadow: var(--shadow-sm);}
+        .education-item-content {display: grid; gap: 0.35rem;}
         .education-item h3 {font-size: 1.1rem; margin-bottom: 0.3rem;}
         .education-item p {font-size: 1rem; opacity: 0.9;}
 
@@ -265,12 +267,18 @@
                     <div class="info-section">
                         <h2>Education</h2>
                         <div class="education-item">
-                            <h3>BSc Biomedical Engineering</h3> <small>Jan 2021 - Nov 2024</small>
-                            <p>Kwame Nkrumah University of Science and Technology (KNUST)</p>
+                            <img src="assets/knust.png" alt="KNUST logo" class="edu-logo">
+                            <div class="education-item-content">
+                                <h3>BSc Biomedical Engineering</h3> <small>Jan 2021 - Nov 2024</small>
+                                <p>Kwame Nkrumah University of Science and Technology (KNUST)</p>
+                            </div>
                         </div>
                         <div class="education-item">
-                            <h3>MSE Data Science</h3> <small>Aug 2025 - Present</small>
-                            <p>University of Pennsylvania (UPenn)</p>
+                            <img src="assets/upenn.png" alt="UPenn logo" class="edu-logo">
+                            <div class="education-item-content">
+                                <h3>MSE Data Science</h3> <small>Aug 2025 - Present</small>
+                                <p>University of Pennsylvania (UPenn)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
