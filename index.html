@@ -137,6 +137,24 @@
           .talk-details p a {color: var(--accent-primary); text-decoration: none; transition: color 0.18s ease, text-decoration 0.18s ease;}  
           .talk-details p a:hover {text-decoration: underline; color: var(--accent-hover);}  
 
+        /* Projects */
+        #projects {padding: 6rem 4rem; max-width: 900px; margin: auto; background: var(--bg-primary); transition: background-color 0.3s ease;}
+        #projects h2 {font-size: 2rem; margin-bottom: 3rem; color: var(--accent-hover);}
+        .projects-timeline {position: relative; padding-left: 2rem;}
+        .projects-timeline::before {content: ''; position: absolute; left: -7px; top: 0; bottom: 0; width: 2px; background: var(--border-color);}
+        .project-item {margin-bottom: 2rem; position: relative; cursor: pointer;}
+        .project-item::before {content: ''; position: absolute; left: -46.5px; top: 0.25rem; width: 12px; height: 12px; background: var(--accent-primary); border-radius: 50%; border: 3px solid var(--bg-primary); transition: transform 0.3s ease, background 0.3s ease;}
+        .project-item:hover::before {transform: scale(1.25);}
+        .project-item:focus-visible {outline: 2px solid var(--accent-primary); outline-offset: 4px; border-radius: 4px;}
+        .project-header {display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;}
+        .project-header h3 {font-size: 1.15rem; font-weight: 600; color: var(--text-primary); transition: color 0.3s; margin: 0;}
+        .project-item:hover .project-header h3 {color: var(--accent-primary);}
+        .project-toggle {font-size: 1.2rem; color: var(--accent-primary); transition: transform 0.3s; flex-shrink: 0; user-select: none; line-height: 1;}
+        .project-item.expanded .project-toggle {transform: rotate(180deg);}
+        .project-desc {max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease; margin-top: 0; padding-right: 1rem;}
+        .project-item.expanded .project-desc {max-height: 600px; opacity: 1; margin-top: 0.75rem;}
+        .project-desc p {font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary); margin: 0;}
+
         @media (max-width: 900px) {
             .hero-content {grid-template-columns: 1fr; text-align: center;}
             .news-panel {position: static; width: 100%; max-width: none; max-height: 240px; margin-top: 1rem;}
@@ -145,6 +163,9 @@
             .talk-item {grid-template-columns: 1fr;}
             .talks-grid {grid-template-columns: 1fr;}
             .talks-column {width: 100%;}
+            #projects {padding: 6rem 2rem;}
+            .project-item::before {left: -38.5px;}
+            .projects-timeline {padding-left: 1.5rem;}
         }
     </style>
 </head>
@@ -439,6 +460,61 @@
         </div>
     </section>
 
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-timeline">
+            <div class="project-item" tabindex="0" role="button" aria-expanded="false">
+                <div class="project-header">
+                    <h3>MedSegMNIST</h3>
+                    <span class="project-toggle" aria-hidden="true">▾</span>
+                </div>
+                <div class="project-desc">
+                    <p>A Python library for easy access to 2D and 3D Medical Image Segmentation datasets provided in varying resolutions and sizes, designed for benchmarking and learning purposes.</p>
+                </div>
+            </div>
+
+            <div class="project-item" tabindex="0" role="button" aria-expanded="false">
+                <div class="project-header">
+                    <h3>Multi-Omic Data Integration for Head and Neck Tumor Prognostication</h3>
+                    <span class="project-toggle" aria-hidden="true">▾</span>
+                </div>
+                <div class="project-desc">
+                    <p>Multimodal learning framework to predict 5-year survivability and recurrence rates. Integrated whole-slide image features from CLAM with structured clinical data, laboratory analytes, surgical notes, and patient history. Used ClinicalBERT for text embeddings and low-rank bilinear fusion, achieving an AUC of 0.75 across tasks.</p>
+                </div>
+            </div>
+
+            <div class="project-item" tabindex="0" role="button" aria-expanded="false">
+                <div class="project-header">
+                    <h3>Vision-Language Surgical Scene Understanding &amp; Panoptic Segmentation</h3>
+                    <span class="project-toggle" aria-hidden="true">▾</span>
+                </div>
+                <div class="project-desc">
+                    <p>End-to-end system integrating surgical video data and panoptic segmentations for automated operating room scene understanding. Trained S2-Scaled SwinUNETR for panoptic segmentation across 21 classes. Fine-tuned MedGemma using QLoRA for scene graph generation and event significance detection.</p>
+                </div>
+            </div>
+
+            <div class="project-item" tabindex="0" role="button" aria-expanded="false">
+                <div class="project-header">
+                    <h3>Collaborative AI Resources for Expectant Mothers (C.A.R.E)</h3>
+                    <span class="project-toggle" aria-hidden="true">▾</span>
+                </div>
+                <div class="project-desc">
+                    <p>Accessible AI assistant built on Large Language Models with Retrieval-Augmented Generation to help expectant mothers with gestational diabetes. Deployed through WhatsApp for inclusivity and ease of access, providing personalized health guidance in low-resource settings.</p>
+                </div>
+            </div>
+
+            <div class="project-item" tabindex="0" role="button" aria-expanded="false">
+                <div class="project-header">
+                    <h3>Generative AI for Medical Imaging Enhancement and Data Augmentation</h3>
+                    <span class="project-toggle" aria-hidden="true">▾</span>
+                </div>
+                <div class="project-desc">
+                    <p>Developed generative models to improve medical imaging quality and data efficiency. Super-resolution and denoising framework for high-resolution head CT scans from low-resolution variants, reducing radiation exposure. Implemented Deep Convolutional GANs for synthetic medical image generation for self-supervised pre-training and data-efficient fine-tuning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Lightbox for image expansion -->
     <div class="lightbox" id="lightbox">
         <img src="" alt="Expanded view" id="lightbox-img">
@@ -504,6 +580,21 @@
                 sunIcon.style.display = 'none';
             }
         });
+
+        // Projects expand/collapse
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.addEventListener('click', () => toggleProject(item));
+            item.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleProject(item);
+                }
+            });
+        });
+        function toggleProject(item) {
+            const expanded = item.classList.toggle('expanded');
+            item.setAttribute('aria-expanded', expanded);
+        }
     </script>
 </body>
 </html>
