@@ -7,12 +7,12 @@
     <link rel="icon" type="image/png" href="assets/notion-face.png">
 
     <!-- SEO Meta Description -->
-    <meta name="description" content="Toufiq Musah – MSE Data Science student at the University of Pennsylvania. Research in Computer Vision, Medical Image Analysis, and Trustworthy AI for Healthcare.">
+    <meta name="description" content="Toufiq Musah – ECE PhD Student at Boston University. Research in Computer Vision, Medical Image Analysis, and Trustworthy AI for Healthcare.">
 
     <!-- Open Graph (Facebook, LinkedIn, iMessage, WhatsApp, Slack, etc.) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Toufiq Musah">
-    <meta property="og:description" content="MSE Data Science student at the University of Pennsylvania. Research in Computer Vision, Medical Image Analysis, and Trustworthy AI for Healthcare.">
+    <meta property="og:description" content="ECE PhD Student at Boston University. Research in Computer Vision, Medical Image Analysis, and Trustworthy AI for Healthcare.">
     <meta property="og:image" content="https://toufiqmusah.github.io/assets/headshot.jpeg">
     <meta property="og:image:width" content="280">
     <meta property="og:image:height" content="280">
@@ -21,186 +21,550 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Toufiq Musah">
-    <meta name="twitter:description" content="MSE Data Science student at the University of Pennsylvania. Research in Computer Vision, Medical Image Analysis, and Trustworthy AI for Healthcare.">
+    <meta name="twitter:description" content="ECE PhD Student at Boston University. Research in Computer Vision, Medical Image Analysis, and Trustworthy AI for Healthcare.">
     <meta name="twitter:image" content="https://toufiqmusah.github.io/assets/headshot.jpeg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Prevent Theme FOUC -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
     <style>
         * {margin: 0; padding: 0; box-sizing: border-box;}
         
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
         /* CSS Variables for theming */
         :root {
             --bg-primary: #ffffff;
-            --bg-secondary: #f9f9f9;
+            --bg-secondary: #f7f7f8;
             --bg-nav: #ffffff;
-            --text-primary: #333333;
-            --text-secondary: #666666;
-            --text-light: #999999;
-            --accent-primary: #0066cc;
-            --accent-hover: #0f4c3a;
-            --border-color: #dddddd;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-            --shadow-md: 0 8px 20px rgba(0,0,0,0.22);
-            --paper-bg: #eeeeee;
+            --text-primary: #222;
+            --text-secondary: #555;
+            --text-light: #999;
+            --accent-primary: #1a5276;
+            --accent-hover: #0e3d5c;
+            --border-color: #e5e5e5;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --paper-bg: #f5f5f5;
         }
         
         [data-theme="dark"] {
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #242424;
-            --bg-nav: #1f1f1f;
+            --bg-primary: #181818;
+            --bg-secondary: #212121;
+            --bg-nav: #181818;
             --text-primary: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --text-light: #888888;
-            --accent-primary: #4a9eff;
-            --accent-hover: #66b3ff;
-            --border-color: #3a3a3a;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
-            --shadow-md: 0 8px 20px rgba(0,0,0,0.5);
-            --paper-bg: #2a2a2a;
+            --text-secondary: #aaa;
+            --text-light: #666;
+            --accent-primary: #6fb3d8;
+            --accent-hover: #8dc9e8;
+            --border-color: #333;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --paper-bg: #212121;
         }
         
-        body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text-primary); background: var(--bg-primary); transition: background-color 0.3s ease, color 0.3s ease;}
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background-color 0.2s, color 0.2s;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            letter-spacing: -0.01em;
+        }
+
+
 
         /* Navigation */
-        nav {display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: var(--bg-nav); box-shadow: var(--shadow-sm); position: fixed; width: 100%; top: 0; z-index: 1000; transition: background-color 0.3s ease;}
-        .logo {font-size: 1.5rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;}
-        .logo img {width: 32px; height: 32px; border-radius: 50%;}
-        .nav-links {display: flex; gap: 2.5rem; list-style: none; align-items: center;}
-        .nav-links a {text-decoration: none; color: var(--text-primary); font-size: 1.1rem; font-weight: 500; transition: color 0.3s;}
-        .nav-links a:hover {color: var(--accent-primary);}
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 4rem;
+            background: var(--bg-nav);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.2s;
+        }
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+        .logo img {width: 32px; height: 32px; border-radius: 50%; object-fit: cover;}
+        .nav-links {display: flex; gap: 2rem; list-style: none; align-items: center;}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+        .nav-links a:hover {color: var(--text-primary);}
         
         /* Dark mode toggle */
-        .theme-toggle {background: none; border: none; cursor: pointer; font-size: 1.3rem; padding: 0.5rem; display: flex; align-items: center; transition: opacity 0.3s ease; color: var(--text-primary);}
-        .theme-toggle:hover {opacity: 0.7;}
-        .theme-toggle svg {width: 20px; height: 20px; fill: currentColor;}
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            cursor: pointer;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: color 0.15s;
+        }
+        .theme-toggle:hover {
+            color: var(--text-primary);
+        }
+        .theme-toggle svg {width: 16px; height: 16px; fill: currentColor;}
 
         /* Hero */
-    .hero {background: linear-gradient(135deg, rgba(1, 31, 28, 0.886) 0%, rgba(0, 8, 29, 0.918) 100%), url('assets/background.webp') center/cover no-repeat; min-height: 100vh; display: flex; align-items: center; padding: 6rem 4rem 4rem; margin-top: 80px;}
-    .hero-content {position: relative; display: grid; grid-template-columns: 400px 1fr; gap: 6rem; max-width: 1400px; margin: 0 auto; width: 100%;}
+        .hero {
+            background: linear-gradient(135deg, rgba(1, 31, 28, 0.90) 0%, rgba(0, 8, 29, 0.94) 100%), url('assets/background.webp') center/cover no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 4rem 4rem;
+            margin-top: 60px;
+        }
+        .hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 5rem;
+            max-width: 1350px;
+            margin: 0 auto;
+            width: 100%;
+        }
         .profile-section {text-align: center; color: white;}
-        .profile-image {width: 280px; height: 280px; border-radius: 50%; margin: 0 auto 2rem; overflow: hidden; background: #d3d3d3;}
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 8px;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            background: #d3d3d3;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
         .profile-image img {width: 100%; height: 100%; object-fit: cover;}
-        .profile-name {font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;}
-        .profile-title {font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem;}
-        .profile-org {font-size: 1.2rem; margin-bottom: 2rem;}
-        .social-links {display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem;}
-        .social-links a {color: white; font-size: 1.8rem; transition: transform 0.3s;}
-        .social-links a:hover {transform: scale(1.1);}
+        .profile-name {font-size: 1.8rem; font-weight: 600; margin-bottom: 0.35rem;}
+        .profile-title {font-size: 1.1rem; font-weight: 500; margin-bottom: 0.3rem; opacity: 0.9;}
+        .profile-org {font-size: 1rem; margin-bottom: 1.25rem; opacity: 0.75;}
+        .social-links {display: flex; justify-content: center; gap: 1.25rem; margin-top: 1.5rem;}
+        .social-links a {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            opacity: 0.7;
+            transition: opacity 0.15s;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            opacity: 1;
+        }
+        .social-links a img {width: 20px; height: 20px;}
 
         .about-section {color: white;}
-        .about-section h1 {font-size: 3rem; margin-bottom: 2rem;}
-        .about-text {font-size: 1.25rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95;}
+        .about-section h1 {font-size: 2rem; margin-bottom: 1.25rem; font-weight: 600;}
+        .about-text {font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.75rem; opacity: 0.9;}
 
-    /* News panel (embedded in hero) */
-    .news-panel {position: static; width: 100%; max-width: 100%; max-height: 240px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 8px 20px rgba(0,0,0,0.22); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 12px; padding: 0.75rem 0.75rem; color: #fff; overflow: hidden; z-index: 5; margin-top: 0.75rem; text-align: left;}
-    .news-header {display: flex; align-items: center; justify-content: flex-start; margin-bottom: 0.25rem;}
-    .news-title {font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2px; opacity: 0.95;}
-    .news-body {max-height: 180px; overflow-y: auto; padding-right: 2px;}
-    .news-list {list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin: 0;}
-    .news-item {font-size: 0.75rem; line-height: 1.3; opacity: 0.95;}
-    .news-item time {display: block; font-size: 0.7rem; opacity: 0.8; margin-top: 0.25rem;}
+        /* News panel (embedded in hero) */
+        .news-panel {
+            position: static;
+            width: 100%;
+            max-width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            color: #fff;
+            margin-top: 1.25rem;
+            text-align: left;
+        }
+        .news-header {display: flex; align-items: center; justify-content: flex-start; margin-bottom: 0.5rem;}
+        .news-title {font-size: 0.85rem; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; opacity: 0.7;}
+        .news-body {max-height: 190px; overflow-y: auto; padding-right: 4px;}
+        .news-body::-webkit-scrollbar {width: 4px;}
+        .news-body::-webkit-scrollbar-track {background: transparent;}
+        .news-body::-webkit-scrollbar-thumb {background: rgba(255,255,255,0.25); border-radius: 4px;}
+        .news-list {list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin: 0;}
+        .news-item {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            opacity: 0.92;
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .news-item:last-child {border-bottom: none; padding-bottom: 0;}
 
         /* Info grid */
-        .info-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;}
-        .info-section h2 {font-size: 1.8rem; margin-bottom: 1.5rem;}
-        .info-section li {font-size: 1.15rem; margin-bottom: 1rem;}
+        .info-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem;}
+        .info-section h2 {font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600; color: rgba(255,255,255,0.8);}
+        .info-section ul {list-style-type: none; padding-left: 0;}
+        .info-section li {
+            font-size: 1.05rem;
+            margin-bottom: 0.85rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+        }
+        .info-section li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: rgba(255,255,255,0.5);
+            font-size: 1.1rem;
+        }
 
-        /* Papers */
-        #papers {padding: 6rem 4rem; max-width: 1100px; margin: auto; background: var(--bg-primary); transition: background-color 0.3s ease;}
-        #papers h2 {font-size: 2rem; margin-bottom: 2rem; color: var(--accent-hover);}
-        .paper-item {display: grid; grid-template-columns: 150px 1fr; gap: 2rem; margin-bottom: 2rem; align-items: center;}
-        .paper-image {width: 150px; height: 100px; background: var(--paper-bg); border-radius: 8px; cursor: pointer; transition: transform 0.3s;}
-        .paper-image:hover {transform: scale(1.05);}
-        .paper-details h3 {font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-primary);}
-        .paper-details p {font-size: 1rem; opacity: 0.9; color: var(--text-secondary);}
-        .paper-details a {color: var(--accent-primary); text-decoration: none; transition: color 0.3s;}
-        .paper-details a:hover {color: var(--accent-hover);}
+        /* Publications / Papers */
+        #papers {padding: 4rem 4rem; max-width: 1050px; margin: auto; background: var(--bg-primary); transition: background-color 0.2s;}
+        #papers h2 {font-size: 1.6rem; margin-bottom: 2rem; color: var(--text-primary); font-weight: 600;}
+        .paper-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 6px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .paper-item:last-child {
+            border-bottom: none;
+        }
+        .paper-image {
+            width: 150px;
+            height: 100px;
+            background: var(--paper-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .paper-image img {width: 100%; height: 100%; object-fit: cover;}
+        .paper-details h3 {font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--text-primary); line-height: 1.4; font-weight: 600;}
+        .paper-details p {font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 0.5rem;}
+        .paper-links {display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.3rem;}
+        .paper-link {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--accent-primary);
+        }
+        .paper-link:hover {
+            text-decoration: underline;
+        }
 
         /* Lightbox */
-        .lightbox {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; justify-content: center; align-items: center; cursor: pointer;}
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
         .lightbox.active {display: flex;}
-        .lightbox img {max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px;}
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.6;
+        }
+        .lightbox-close:hover {opacity: 1;}
 
         /* Education */
-        .education-item {margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;}
-        .education-item img.edu-logo {width: 70px; height: 70px; border-radius: 14px; object-fit: contain; padding: 0.35rem; box-shadow: var(--shadow-sm);}
-        .education-item-content {display: grid; gap: 0.35rem;}
-        .education-item h3 {font-size: 1.1rem; margin-bottom: 0.3rem;}
-        .education-item p {font-size: 1rem; opacity: 0.9;}
+        .education-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            padding: 0.4rem;
+        }
+        .education-item img.edu-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 6px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 0.3rem;
+            flex-shrink: 0;
+        }
+        .education-item-content {display: grid; gap: 0.15rem;}
+        .education-item h3 {font-size: 0.95rem; margin-bottom: 0.1rem; font-weight: 600; color: #fff;}
+        .education-item small {font-size: 0.8rem; color: rgba(255,255,255,0.5);}
+        .education-item p {font-size: 0.9rem; opacity: 0.8; color: #e2e8f0;}
 
         /* Experience */
-        .experience-list {margin-top: 1.5rem;}
-        .experience-item {display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.2rem;}
-        .experience-logo {width: 50px; height: 50px; border-radius: 8px; object-fit: contain;}
-        .experience-info h3 {font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem;}
-        .experience-info p {font-size: 0.95rem; opacity: 0.9;}
+        .experience-list {margin-top: 1.25rem;}
+        .experience-item {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 1rem;
+            padding: 0.4rem;
+        }
+        .experience-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 0.25rem;
+            flex-shrink: 0;
+        }
+        .experience-info h3 {font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; color: #fff;}
+        .experience-info p {font-size: 0.88rem; opacity: 0.8; color: #e2e8f0;}
 
-    /* Talks & Tutorials */
-    #talks {padding: 6rem 4rem; max-width: 1100px; margin: auto; background: var(--bg-secondary); transition: background-color 0.3s ease;}
-    /* Two-column layout: left = talks, right = tutorials */
-    .talks-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;}
-    .talks-column {display: flex; flex-direction: column; gap: 1rem;}
-    .talks-column h3.column-title {font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 700;}
-    .talks-grid .talk-item {margin: 0; padding-bottom: 0; border-bottom: none;}
-        #talks h2 {font-size: 2rem; margin-bottom: 2rem; color: var(--accent-hover);} 
-        .talk-item {display: grid; grid-template-columns: 150px 1fr; gap: 2rem; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color); align-items: center;} 
-        .talk-item:last-child {border-bottom: none; padding-bottom: 0;} 
-        .talk-image {display: block; width: 150px; height: 100px; background: var(--paper-bg); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.3s;} 
-        .talk-image:hover {transform: scale(1.05);}   
-        .talk-image img {width: 100%; height: 100%; object-fit: cover; border-radius: 8px;}  
-          /* Titles should read like headings (main text color). Reserve accent for small/source links.
-              - Headline links inherit text color and only show accent on hover.
-              - Source/aux links keep accent color but with subtle underline on hover. */
-          .talk-details h3 {font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);}  
-          .talk-details h3 a {color: inherit; text-decoration: none; transition: color 0.18s ease;}  
-          .talk-details h3 a:hover {color: var(--accent-primary);}  
-          .talk-details p {font-size: 1rem; color: var(--text-secondary);}  
-          .talk-details p a {color: var(--accent-primary); text-decoration: none; transition: color 0.18s ease, text-decoration 0.18s ease;}  
-          .talk-details p a:hover {text-decoration: underline; color: var(--accent-hover);}  
+        /* Talks & Tutorials */
+        #talks {padding: 4rem 4rem; max-width: 1050px; margin: auto; background: var(--bg-secondary); transition: background-color 0.2s;}
+        #talks h2 {font-size: 1.6rem; margin-bottom: 2rem; color: var(--text-primary); font-weight: 600;}
+        .talks-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start;}
+        .talks-column {display: flex; flex-direction: column; gap: 1.25rem;}
+        .talks-column h3.column-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .talk-item {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 1.25rem;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+        .talk-image {
+            display: block;
+            width: 130px;
+            height: 88px;
+            background: var(--paper-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .talk-image img {width: 100%; height: 100%; object-fit: cover;}
+        .talk-details h3 {font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--text-primary); line-height: 1.4;}
+        .talk-details h3 a {color: inherit; text-decoration: none; transition: color 0.2s ease;}
+        .talk-details h3 a:hover {color: var(--accent-primary);}
+        .talk-details p {font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;}
+        .talk-details p a {color: var(--accent-primary); text-decoration: none; font-weight: 500; transition: color 0.2s ease;}
+        .talk-details p a:hover {text-decoration: underline;}
+
+        /* Software & Datasets */
+        #software {padding: 4rem 4rem; max-width: 1050px; margin: auto; background: var(--bg-primary); transition: background-color 0.2s;}
+        #software h2 {font-size: 1.6rem; margin-bottom: 2rem; color: var(--text-primary); font-weight: 600;}
+        .software-list {display: flex; flex-direction: column; gap: 1.25rem;}
+        .software-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .software-item:last-child {border-bottom: none;}
+        .software-item-header {display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.35rem;}
+        .software-item-header h3 {font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin: 0;}
+        .software-type {
+            font-size: 0.72rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+        }
+        .software-item p {font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 0.4rem;}
+        .software-item-links {display: flex; gap: 0.75rem; flex-wrap: wrap;}
+        .software-item-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--accent-primary);
+        }
+        .software-item-links a:hover {text-decoration: underline;}
 
         /* Projects */
-        #projects {padding: 6rem 4rem; max-width: 900px; margin: auto; background: var(--bg-primary); transition: background-color 0.3s ease;}
-        #projects h2 {font-size: 2rem; margin-bottom: 3rem; color: var(--accent-hover);}
-        .projects-timeline {position: relative; padding-left: 2rem;}
-        .projects-timeline::before {content: ''; position: absolute; left: -7px; top: 0; bottom: 0; width: 2px; background: var(--border-color);}
-        .project-item {margin-bottom: 2rem; position: relative; cursor: pointer;}
-        .project-item::before {content: ''; position: absolute; left: -46.5px; top: 0.25rem; width: 12px; height: 12px; background: var(--accent-primary); border-radius: 50%; border: 3px solid var(--bg-primary); transition: transform 0.3s ease, background 0.3s ease;}
-        .project-item:hover::before {transform: scale(1.25);}
-        .project-item:focus-visible {outline: 2px solid var(--accent-primary); outline-offset: 4px; border-radius: 4px;}
-        .project-header {display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;}
-        .project-header h3 {font-size: 1.15rem; font-weight: 600; color: var(--text-primary); transition: color 0.3s; margin: 0;}
-        .project-item:hover .project-header h3 {color: var(--accent-primary);}
-        .project-toggle {font-size: 1.2rem; color: var(--accent-primary); transition: transform 0.3s; flex-shrink: 0; user-select: none; line-height: 1;}
+        #projects {padding: 4rem 4rem; max-width: 900px; margin: auto; background: var(--bg-primary); transition: background-color 0.2s;}
+        #projects h2 {font-size: 1.6rem; margin-bottom: 2rem; color: var(--text-primary); font-weight: 600;}
+        .projects-timeline {position: relative; padding-left: 2.5rem;}
+        .projects-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 2px;
+            background: var(--border-color);
+            border-radius: 2px;
+        }
+        .project-item {
+            margin-bottom: 1.25rem;
+            position: relative;
+            cursor: pointer;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        .project-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1.4rem;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 50%;
+        }
+        .project-item:focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+        .project-header {display: flex; justify-content: space-between; align-items: center; gap: 1rem;}
+        .project-header h3 {font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 0;}
+        .project-toggle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+            user-select: none;
+        }
         .project-item.expanded .project-toggle {transform: rotate(180deg);}
-        .project-desc {max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease; margin-top: 0; padding-right: 1rem;}
-        .project-item.expanded .project-desc {max-height: 600px; opacity: 1; margin-top: 0.75rem;}
-        .project-desc p {font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary); margin: 0;}
+        .project-desc {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.2s ease;
+            margin-top: 0;
+        }
+        .project-item.expanded .project-desc {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 0.6rem;
+        }
+        .project-desc p {font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary); margin: 0;}
 
-        @media (max-width: 900px) {
-            .hero-content {grid-template-columns: 1fr; text-align: center;}
-            .news-panel {position: static; width: 100%; max-width: none; max-height: 240px; margin-top: 1rem;}
-            .info-grid {grid-template-columns: 1fr;}
-            .paper-item {grid-template-columns: 1fr;}
-            .talk-item {grid-template-columns: 1fr;}
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 999;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            color: var(--text-primary);
+        }
+        .back-to-top svg {width: 16px; height: 16px; fill: currentColor;}
+
+        /* Footer */
+        footer {
+            padding: 2rem 4rem;
+            text-align: center;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 960px) {
+            nav {padding: 1rem 1.5rem;}
+            .nav-links {gap: 1.25rem;}
+            .nav-links a {font-size: 0.95rem;}
+            .hero {padding: 5rem 1.5rem 3rem;}
+            .hero-content {grid-template-columns: 1fr; text-align: center; gap: 3rem;}
+            .profile-image {width: 200px; height: 200px; border-radius: 8px;}
+            .news-panel {position: static; width: 100%; max-width: none; margin-top: 1rem;}
+            .info-grid {grid-template-columns: 1fr; gap: 2rem;}
+            #papers, #talks, #projects {padding: 4rem 1.5rem;}
+            .paper-item {grid-template-columns: 1fr; gap: 1.25rem;}
+            .paper-image {width: 100%; height: 180px;}
+            .talk-item {grid-template-columns: 1fr; gap: 1rem;}
+            .talk-image {width: 100%; height: 180px;}
             .talks-grid {grid-template-columns: 1fr;}
             .talks-column {width: 100%;}
-            #projects {padding: 6rem 2rem;}
-            .project-item::before {left: -38.5px;}
-            .projects-timeline {padding-left: 1.5rem;}
+            .projects-timeline {padding-left: 1.75rem;}
+            .project-item::before {left: -1.75rem;}
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="logo">
+        <a href="#bio" class="logo">
             <img src="assets/notion-face.png" alt="Toufiq Musah">
             Toufiq Musah
-        </div>
+        </a>
         <ul class="nav-links">
             <li><a href="#bio">Bio</a></li>
             <li><a href="#papers">Papers</a></li>
             <li><a href="#talks">Talks</a></li>
+            <li><a href="#software">Software</a></li>
             <li><a href="#projects">Projects</a></li>
             <li>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
                     <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                     </svg>
@@ -223,16 +587,16 @@
     <section class="hero" id="bio">
         <div class="hero-content">
             <div class="profile-section"> 
-                <div class="profile-image"><img src="assets/headshot.jpeg" alt="Toufiq Musah"></div>
+                <div class="profile-image"><img src="assets/profile.jpg" alt="Toufiq Musah"></div>
                 <div class="profile-name">Toufiq Musah</div>
-                <div class="profile-title">MSE Data Science Student</div>
-                <div class="profile-org">University of Pennsylvania</div>
+                <div class="profile-title">ECE PhD Student</div>
+                <div class="profile-org">Boston University</div>
                 <div class="social-links">
-                    <a href="mailto:toufiqmusah32@gmail.com" target="_blank" rel="noopener noreferrer"><img src="assets/icons8-mail-48.png" alt="Email" width="30px"></a>
-                    <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer"><img src="assets/icons8-github.svg" alt="GitHub" width="30px"></a>
-                    <a href="https://www.linkedin.com/in/toufiqmusah" target="_blank" rel="noopener noreferrer"><img src="assets/icons8-linkedin.svg" alt="LinkedIn" width="30px"></a>
-                    <a href="https://scholar.google.de/citations?user=-xMHIT0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer"><img src="assets/scholar-image.png" alt="Google Scholar" width="30px"></a>
-                    <a href="images/toufiq-cv.pdf" target="_blank" rel="noopener noreferrer"><img src="assets/cv-logo.png" alt="Resume" width="30px"></a>
+                    <a href="mailto:toufiqmusah32@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" aria-label="Email"><img src="assets/icons8-mail-48.png" alt="Email"></a>
+                    <a href="https://github.com/toufiqmusah" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><img src="assets/icons8-github.svg" alt="GitHub"></a>
+                    <a href="https://www.linkedin.com/in/toufiqmusah" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><img src="assets/icons8-linkedin.svg" alt="LinkedIn"></a>
+                    <a href="https://scholar.google.de/citations?user=-xMHIT0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><img src="assets/scholar-image.png" alt="Google Scholar"></a>
+                    <a href="images/toufiq-cv.pdf" target="_blank" rel="noopener noreferrer" title="Resume / CV" aria-label="Resume"><img src="assets/cv-logo.png" alt="Resume"></a>
                 </div>
 
                 <div class="news-panel" aria-label="Latest news">
@@ -241,14 +605,12 @@
                     </div>
                     <div class="news-body">
                         <ul class="news-list">
-
                             <li class="news-item">
                                 Attending
                                 <a href="https://www.ismrm.org" target="_blank" style="color:#99ccff; text-decoration:none;">ISMRM</a>
                                 in Cape Town and presenting on
-                                <a href="https://link.springer.com/chapter/10.1007/978-3-031-79103-1_8" target="_blank" style="color:#99ccff; text-decoration:none;">Pedeatric Neuroanatomy Segmentation in Ulta-Low-Field MRI</a>.
+                                <a href="https://link.springer.com/chapter/10.1007/978-3-031-79103-1_8" target="_blank" style="color:#99ccff; text-decoration:none;">Pediatric Neuroanatomy Segmentation in Ultra-Low-Field MRI</a>, May 2026.
                             </li>
-
                             <li class="news-item" style="font-size:0.75rem; margin-bottom:0.6rem;">
                                 Presenting at the
                                 <a href="https://mailab.io/title-automated-medical-image-segmentation-and-its-implications-toward-trustworthy-clinical-tools-compass-september-2025/" target="_blank" style="color:#99ccff; text-decoration:none;">
@@ -256,7 +618,6 @@
                                 </a>
                                 on Automated 3D Medical Image Segmentation, Sept 2025.
                             </li>
-
                             <li class="news-item">
                                 Won the 
                                 <a href="https://arxiv.org/abs/2510.03568?" target="_blank" style="color:#99ccff; text-decoration:none;">Brain Tumor Segmentation Challenge</a>
@@ -282,8 +643,7 @@
                                 Hosting a tutorial on 
                                 <a href="https://toufiqmusah.github.io/ml-optimization-indabax.github.io/" target="_blank" style="color:#99ccff; text-decoration:none;">Optimisation Techniques</a>
                                 at 
-                                <a href="https://indabaxghana.com" target="_blank" style="color:#99ccff; text-decoration:none;">Ghana Data Science Summit</a>
-                                , Jun 2025.
+                                <a href="https://indabaxghana.com" target="_blank" style="color:#99ccff; text-decoration:none;">Ghana Data Science Summit</a>, Jun 2025.
                             </li>
                         </ul>
                     </div>
@@ -293,7 +653,7 @@
             <div class="about-section">
                 <h1>About Me</h1>
                 <p class="about-text">
-                    I am an MSE Data Science Student at the University of Pennsylvania, with interests in Artificial Intelligence Applications in Health and Medicine. My research spans Computer Vision, Medical Image Analysis, Multi-Omic Data Integration, and Trustworthy AI for Healthcare Delivery, Developing Reliable and Interpretable Clinical Decision Support Tools.
+                    I am an ECE PhD Student at Boston University, with interests in Artificial Intelligence Applications in Health and Medicine. My research spans Computer Vision, Computational Neuroscience, Medical Image Analysis, Multi-Modal Data Integration, and Trustworthy AI.
                 </p>
                 <div class="info-grid">
                     <div class="info-section">
@@ -301,23 +661,31 @@
                         <ul>
                             <li>Computer Vision</li>
                             <li>Medical Image Analysis</li>
+                            <li>Computational Neuroscience</li>
                             <li>Artificial Intelligence in Medicine</li>
                         </ul>
                     </div>
                     <div class="info-section">
                         <h2>Education</h2>
                         <div class="education-item">
-                            <img src="assets/knust.png" alt="KNUST logo" class="edu-logo">
+                            <img src="assets/boston-u.png" alt="BU logo" class="edu-logo">
                             <div class="education-item-content">
-                                <h3>BSc Biomedical Engineering</h3> <small>Jan 2021 - Nov 2024</small>
-                                <p>Kwame Nkrumah University of Science and Technology (KNUST)</p>
+                                <h3>PhD Electrical and Computer Engineering</h3> <small>Aug 2026 - Present</small>
+                                <p>Boston University (BU)</p>
                             </div>
                         </div>
                         <div class="education-item">
                             <img src="assets/upenn.png" alt="UPenn logo" class="edu-logo">
                             <div class="education-item-content">
-                                <h3>MSE Data Science</h3> <small>Aug 2025 - Present</small>
+                                <h3>MSE Data Science</h3> <small>Aug 2025 - Aug 2026</small>
                                 <p>University of Pennsylvania (UPenn)</p>
+                            </div>
+                        </div>
+                        <div class="education-item">
+                            <img src="assets/knust.png" alt="KNUST logo" class="edu-logo">
+                            <div class="education-item-content">
+                                <h3>BSc Biomedical Engineering</h3> <small>Jan 2021 - Nov 2024</small>
+                                <p>Kwame Nkrumah University of Science and Technology (KNUST)</p>
                             </div>
                         </div>
                     </div>
@@ -337,7 +705,7 @@
                             <img src="assets/rail.png" alt="RAIL" class="experience-logo">
                             <div class="experience-info">
                                 <h3>Research Assistant</h3>
-                                    <p><a href="https://rail.knust.edu.gh/about-us/" target="_blank" style="color: white; text-decoration: underline;">Responsible Artificial Intelligence Lab (RAIL)</a> • Oct 2023 - Feb 2024</p>
+                                <p><a href="https://rail.knust.edu.gh/about-us/" target="_blank" style="color: white; text-decoration: underline;">Responsible Artificial Intelligence Lab (RAIL)</a> • Oct 2023 - Feb 2024</p>
                             </div>
                         </div>
                     </div>
@@ -350,75 +718,84 @@
         <h2>Selected Publications</h2>
 
         <div class="paper-item">
-            <div class="paper-image"><img src="paper-figures/ulf-synth.png" alt="ULF-Synth" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-image"><img src="paper-figures/ulf-synth.png" alt="ULF-Synth preview"></div>
             <div class="paper-details">
                 <h3>ULF-Synth: Physics-Guided Ultra-Low-Field MRI Enhancement for Pediatric Neuroimaging</h3>
                 <p><strong>Toufiq Musah</strong>, Salvatore Calcagno, Federica Proietto Salanitri, Xiaomeng Li, Maruf Adewole, Marawan Elbatel. arXiv:2605.24625, (2026).</p>
-                <a href="https://arxiv.org/abs/2605.24625" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+                <div class="paper-links">
+                    <a href="https://arxiv.org/abs/2605.24625" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv</a>
+                </div>
             </div>
         </div>
 
         <div class="paper-item">
-            <div class="paper-image"><img src="paper-figures/towards.png" alt="Towards Trustworthy Breast Tumor Segmentation" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-image"><img src="paper-figures/towards.png" alt="Towards Trustworthy Breast Tumor Segmentation"></div>
             <div class="paper-details">
                 <h3>Towards Trustworthy Breast Tumor Segmentation in Ultrasound using Monte Carlo Dropout and Deep Ensembles for Epistemic Uncertainty Estimation</h3>
                 <p><strong>Toufiq Musah</strong>, Chinasa Kalaiwo, Maimoona Akram, Ubaida Napari Abdulai, Maruf Adewole, Farouk Dako, Adaobi Chiazor Emegoakor, Udunna C Anazodo, Prince Ebenezer Adjei, Confidence Raymond, Medical Image Computing in Resource Constrained Settings Workshop. 28th International MICCAI Conference, (2025), arXiv:2508.17768.</p>
-                <a href="https://arxiv.org/abs/2508.17768" target="_blank" rel="noopener noreferrer">[arXiv]</a>
-                &nbsp;
-                <a href="https://link.springer.com/chapter/10.1007/978-3-032-13654-1_5" target="_blank" rel="noopener noreferrer">[Springer]</a>
+                <div class="paper-links">
+                    <a href="https://arxiv.org/abs/2508.17768" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv</a>
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-032-13654-1_5" target="_blank" rel="noopener noreferrer" class="paper-link">Springer</a>
+                </div>
             </div>
         </div>
 
         <div class="paper-item">
-            <div class="paper-image"><img src="paper-figures/how-brats.png" alt="How We Won BraTS-SSA 2025" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-image"><img src="paper-figures/how-brats.png" alt="How We Won BraTS-SSA 2025"></div>
             <div class="paper-details">
                 <h3>How We Won BraTS-SSA 2025: Brain Tumor Segmentation in the Sub-Saharan African Population Using Segmentation-Aware Data Augmentation and Model Ensembling</h3>
                 <p>Claudia Takyi Ankomah, Livingstone Eli Ayivor, Ireneaus Nyame, Leslie Wambo, Patrick Yeboah Bonsu, Aondona Moses Iorumbur, Raymond Confidence, <strong>Toufiq Musah</strong>, Brain Tumor Segmentation, and Cross-Modality Domain Adaptation for Medical Image Segmentation. 28th International MICCAI Conference, (2025), arXiv:2510.03568.</p>
-                <a href="https://arxiv.org/abs/2510.03568" target="_blank" rel="noopener noreferrer">[arXiv]</a>
-                &nbsp;
-                <a href="https://link.springer.com/chapter/10.1007/978-3-032-16365-3_27" target="_blank" rel="noopener noreferrer">[Springer]</a>
+                <div class="paper-links">
+                    <a href="https://arxiv.org/abs/2510.03568" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv</a>
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-032-16365-3_27" target="_blank" rel="noopener noreferrer" class="paper-link">Springer</a>
+                </div>
             </div>
         </div>
 
         <div class="paper-item">
-            <div class="paper-image"><img src="paper-figures/automated-ischemic.png" alt="Automated Segmentation of Ischemic Stroke" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-image"><img src="paper-figures/automated-ischemic.png" alt="Automated Segmentation of Ischemic Stroke"></div>
             <div class="paper-details">
                 <h3>Automated Segmentation of Ischemic Stroke Lesions in Non-Contrast Computed Tomography Images for Enhanced Treatment and Prognosis</h3>
                 <p><strong>Toufiq Musah</strong>, Prince Ebenezer Adjei, Kojo Obed Otoo (2024). Medical Image Computing and Computer Assisted Interventions 2240, 9.</p>
-                <a href="https://link.springer.com/chapter/10.1007/978-3-031-79103-1_8" target="_blank" rel="noopener noreferrer">[Springer]</a>
-                &nbsp;
-                <a href="https://arxiv.org/abs/2411.09402" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+                <div class="paper-links">
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-031-79103-1_8" target="_blank" rel="noopener noreferrer" class="paper-link">Springer</a>
+                    <a href="https://arxiv.org/abs/2411.09402" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv</a>
+                </div>
             </div>
         </div>
 
         <div class="paper-item">
-            <div class="paper-image"><img src="paper-figures/large-kernel.png" alt="Large Kernel MedNeXt for Breast Tumor Segmentation" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-image"><img src="paper-figures/large-kernel.png" alt="Large Kernel MedNeXt for Breast Tumor Segmentation"></div>
             <div class="paper-details">
                 <h3>Large Kernel MedNeXt for Breast Tumor Segmentation and Self-Normalizing Network for pCR Classification in Magnetic Resonance Images</h3>
                 <p><strong>Toufiq Musah</strong>. Artificial Intelligence and Imaging for Diagnostic and Treatment Challenges in Breast Care: Second Deep Breast Workshop, Deep-Breath (2025)</p>
-                <a href="https://link.springer.com/chapter/10.1007/978-3-032-05559-0_8" target="_blank" rel="noopener noreferrer">[Springer]</a>
-                &nbsp;
-                <a href="https://arxiv.org/abs/2508.01831" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+                <div class="paper-links">
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-032-05559-0_8" target="_blank" rel="noopener noreferrer" class="paper-link">Springer</a>
+                    <a href="https://arxiv.org/abs/2508.01831" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv</a>
+                </div>
             </div>
         </div>
 
         <div class="paper-item">
-            <div class="paper-image"><img src="paper-figures/trials.png" alt="TriALS" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-image"><img src="paper-figures/trials.png" alt="TriALS"></div>
             <div class="paper-details">
                 <h3>TriALS: Triphasic-Aided Liver Lesion Segmentation Benchmark in Non-Contrast CT</h3>
                 <p>Marawan Elbatel, Mohamed Ghonim, Jiaji Mao, Zhuosheng Lin, Katharina Eckstein, ..., <strong>Toufiq Musah</strong>, <strong>Livingstone Eli Ayivor</strong>, ... (2026).</p>
-                <a href="https://arxiv.org/abs/2605.16572" target="_blank" rel="noopener noreferrer">[arXiv]</a>
+                <div class="paper-links">
+                    <a href="https://arxiv.org/abs/2605.16572" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv</a>
+                </div>
             </div>
         </div>
 
         <div class="paper-item">
-            <div class="paper-image"><img src="paper-figures/brats7.png" alt="Brain Tumor Segmentation in Sub-Sahara Africa" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+            <div class="paper-image"><img src="paper-figures/brats7.png" alt="Brain Tumor Segmentation in Sub-Sahara Africa"></div>
             <div class="paper-details">
                 <h3>Brain Tumor Segmentation in Sub-Sahara Africa with Advanced Transformer and ConvNet Methods: Fine-Tuning, Data Mixing and Ensembling</h3>
                 <p><strong>Toufiq Musah</strong>, C Amoako-Atta, JA Otu, LE Ismaila, SA Suraka, O Williams, ... Medical Image Computing in Resource Constrained Settings Workshop. 28th International MICCAI Conference, (2025), arXiv:2508.10905.</p>
-                <a href="https://arxiv.org/abs/2508.10905" target="_blank" rel="noopener noreferrer">[arXiv]</a>
-                &nbsp;
-                <a href="https://link.springer.com/chapter/10.1007/978-3-032-13654-1_2" target="_blank" rel="noopener noreferrer">[Springer]</a>
+                <div class="paper-links">
+                    <a href="https://arxiv.org/abs/2508.10905" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv</a>
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-032-13654-1_2" target="_blank" rel="noopener noreferrer" class="paper-link">Springer</a>
+                </div>
             </div>
         </div>
     </section>
@@ -432,26 +809,26 @@
                 <h3 class="column-title">Talks</h3>
 
                 <div class="talk-item">
-                    <a href="https://arxiv.org/abs/2508.17768" target="_blank" class="talk-image"><img src="paper-figures/mirasol.jpeg" alt="Towards Trustworthy Breast Tumor Segmentation"></a>
+                    <div class="talk-image"><img src="paper-figures/mirasol.jpeg" alt="Towards Trustworthy Breast Tumor Segmentation"></div>
                     <div class="talk-details">
-                        <h3><a href="https://arxiv.org/abs/2508.17768" target="_blank">Towards Trustworthy Breast Tumor Segmentation</a></h3>
-                        <p><a href="https://event.fourwaves.com/mirasol/pages" target="_blank">MIRASOL Workshop, MICCAI Conference, 2025</a></p>
+                        <h3><a href="https://arxiv.org/abs/2508.17768" target="_blank" rel="noopener noreferrer">Towards Trustworthy Breast Tumor Segmentation</a></h3>
+                        <p><a href="https://event.fourwaves.com/mirasol/pages" target="_blank" rel="noopener noreferrer">MIRASOL Workshop, MICCAI Conference, 2025</a></p>
                     </div>
                 </div>
 
                 <div class="talk-item">
-                    <a href="https://www.youtube.com/watch?v=WyFzSAm3ya4" target="_blank" class="talk-image"><img src="https://img.youtube.com/vi/WyFzSAm3ya4/hqdefault.jpg" alt="COMPASS Webinar Thumbnail"></a>
+                    <div class="talk-image"><img src="https://img.youtube.com/vi/WyFzSAm3ya4/hqdefault.jpg" alt="COMPASS Webinar Thumbnail"></div>
                     <div class="talk-details">
-                        <h3><a href="https://www.youtube.com/watch?v=WyFzSAm3ya4" target="_blank">Automated Medical Image Segmentation: Toward Trustworthy Clinical Tools</a></h3>
-                        <p><a href="https://mailab.io/title-automated-medical-image-segmentation-and-its-implications-toward-trustworthy-clinical-tools-compass-september-2025/" target="_blank">COMPASS Webinar, 2025</a></p>
+                        <h3><a href="https://www.youtube.com/watch?v=WyFzSAm3ya4" target="_blank" rel="noopener noreferrer">Automated Medical Image Segmentation: Toward Trustworthy Clinical Tools</a></h3>
+                        <p><a href="https://mailab.io/title-automated-medical-image-segmentation-and-its-implications-toward-trustworthy-clinical-tools-compass-september-2025/" target="_blank" rel="noopener noreferrer">COMPASS Webinar, 2025</a></p>
                     </div>
                 </div>
 
                 <div class="talk-item">
-                    <a href="https://toufiqmusah.github.io/ml-optimization-indabax.github.io/" target="_blank" class="talk-image"><img src="paper-figures/indaba-2.jpeg" alt="Optimisation Techniques Tutorial"></a>
+                    <div class="talk-image"><img src="paper-figures/indaba-2.jpeg" alt="Optimisation Techniques Tutorial"></div>
                     <div class="talk-details">
-                        <h3><a href="https://toufiqmusah.github.io/ml-optimization-indabax.github.io/" target="_blank">Optimisation Techniques in Machine Learning</a></h3>
-                        <p><a href="https://indabaxghana.com" target="_blank">Ghana Data Science Summit, Tutorial, 2025</a></p>
+                        <h3><a href="https://toufiqmusah.github.io/ml-optimization-indabax.github.io/" target="_blank" rel="noopener noreferrer">Optimisation Techniques in Machine Learning</a></h3>
+                        <p><a href="https://indabaxghana.com" target="_blank" rel="noopener noreferrer">Ghana Data Science Summit, Tutorial, 2025</a></p>
                     </div>
                 </div>
             </div>
@@ -461,43 +838,71 @@
                 <h3 class="column-title">Tutorials & Articles</h3>
 
                 <div class="talk-item">
-                    <a href="https://medium.com/@toufiqmusah32/a-hitchhikers-guide-to-3d-medical-image-processing-preprocessing-augmentations-dataloaders-975167d4ffe1" target="_blank" class="talk-image"> <img src="paper-figures/hitch.gif" alt="A Hitchhiker's Guide to 3D Medical Image Processing"></a>
+                    <div class="talk-image"><img src="paper-figures/hitch.gif" alt="A Hitchhiker's Guide to 3D Medical Image Processing"></div>
                     <div class="talk-details">
-                        <h3><a href="https://medium.com/@toufiqmusah32/a-hitchhikers-guide-to-3d-medical-image-processing-preprocessing-augmentations-dataloaders-975167d4ffe1" target="_blank">A Hitchhiker's Guide to 3D Medical Image Processing</a></h3>
-                        <p><a href="https://medium.com/@toufiqmusah32/a-hitchhikers-guide-to-3d-medical-image-processing-preprocessing-augmentations-dataloaders-975167d4ffe1" target="_blank">Medium Article</a></p>
+                        <h3><a href="https://medium.com/@toufiqmusah32/a-hitchhikers-guide-to-3d-medical-image-processing-preprocessing-augmentations-dataloaders-975167d4ffe1" target="_blank" rel="noopener noreferrer">A Hitchhiker's Guide to 3D Medical Image Processing</a></h3>
+                        <p><a href="https://medium.com/@toufiqmusah32/a-hitchhikers-guide-to-3d-medical-image-processing-preprocessing-augmentations-dataloaders-975167d4ffe1" target="_blank" rel="noopener noreferrer">Medium Article</a></p>
                     </div>
                 </div>
 
                 <div class="talk-item">
-                    <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" target="_blank" class="talk-image"><img src="paper-figures/intro-torch.gif" alt="Introduction to TorchIO for 3D MRI Processing"></a>
+                    <div class="talk-image"><img src="paper-figures/intro-torch.gif" alt="Introduction to TorchIO for 3D MRI Processing"></div>
                     <div class="talk-details">
-                        <h3><a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" target="_blank">Introduction to TorchIO for 3D MRI Processing</a></h3>
+                        <h3><a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" target="_blank" rel="noopener noreferrer">Introduction to TorchIO for 3D MRI Processing</a></h3>
                         <p>
-                            <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" target="_blank">Preprocessing (Part 1)</a>
+                            <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-preprocessing-transforms-part-1-87947c339400" target="_blank" rel="noopener noreferrer">Preprocessing (Part 1)</a>
                             &nbsp;•&nbsp;
-                            <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-augmentation-transforms-dataloaders-part-2-37272a97ea35" target="_blank">Augmentation & Dataloaders (Part 2)</a>
+                            <a href="https://medium.com/@toufiqmusah32/introduction-to-torchio-for-3d-mri-processing-augmentation-transforms-dataloaders-part-2-37272a97ea35" target="_blank" rel="noopener noreferrer">Augmentation & Dataloaders (Part 2)</a>
                         </p>
                     </div>
                 </div>
 
                 <div class="talk-item">
-                    <a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD" target="_blank" class="talk-image"><img src="paper-figures/end-to-end.png" alt="End-to-End Deep Learning Tutorial for Image Classification: Pneumonia Detection"></a>
+                    <div class="talk-image"><img src="paper-figures/end-to-end.png" alt="End-to-End Deep Learning Tutorial for Image Classification: Pneumonia Detection"></div>
                     <div class="talk-details">
-                        <h3><a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD" target="_blank">End-to-End Deep Learning Tutorial for Image Classification: Pneumonia Detection</a></h3>
-                        <p><a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD" target="_blank">Colab Notebook</a></p>
+                        <h3><a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD" target="_blank" rel="noopener noreferrer">End-to-End Deep Learning Tutorial for Image Classification: Pneumonia Detection</a></h3>
+                        <p><a href="https://colab.research.google.com/drive/12T1Lavr3RqdJWOfeQ7-QIjPPUj2fcdYD" target="_blank" rel="noopener noreferrer">Colab Notebook</a></p>
                     </div>
                 </div>
 
                 <div class="talk-item">
-                    <a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" target="_blank" class="talk-image"><img src="paper-figures/pie.tiff" alt="How to Make an Image Classification Model: Is it a Pie?"></a>
+                    <div class="talk-image"><img src="paper-figures/pie.png" alt="How to Make an Image Classification Model: Is it a Pie?"></div>
                     <div class="talk-details">
-                        <h3><a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" target="_blank">How to Make an Image Classification Model: Is it a Pie?</a></h3>
-                        <p><a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" target="_blank">Blog Post</a></p>
+                        <h3><a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" target="_blank" rel="noopener noreferrer">How to Make an Image Classification Model: Is it a Pie?</a></h3>
+                        <p><a href="https://www.instructables.com/How-to-Make-an-Image-Classification-Model-Is-It-a-/" target="_blank" rel="noopener noreferrer">Blog Post</a></p>
                     </div>
                 </div>
                 
             </div>
 
+        </div>
+    </section>
+
+    <section id="software">
+        <h2>Software & Datasets</h2>
+        <div class="software-list">
+            <div class="software-item">
+                <div class="software-item-header">
+                    <h3>ULF-Synth</h3>
+                    <span class="software-type">Software</span>
+                </div>
+                <p>Physics-guided ultra-low-field MRI simulation and enhancement. Simulates realistic ultra-low-field (0.064T) MRI from high-field volumes and provides pretrained models for enhancing real ULF acquisitions to high-field quality. Installable via PyPI.</p>
+                <div class="software-item-links">
+                    <a href="https://github.com/toufiqmusah/ULF-Synth" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://ulf-synth.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">Docs</a>
+                    <a href="https://toufiqmusah.github.io/ULF-Synth/" target="_blank" rel="noopener noreferrer">Project Page</a>
+                </div>
+            </div>
+            <div class="software-item">
+                <div class="software-item-header">
+                    <h3>GhanaAgricVQA</h3>
+                    <span class="software-type">Dataset</span>
+                </div>
+                <p>A visual question answering dataset for crop disease diagnosis in smallholder farming contexts, built from the RAIL Crop Disease Dataset. Each image has three QA pairs covering identification, action, and prevention, written in farmer-friendly English with Twi translations.</p>
+                <div class="software-item-links">
+                    <a href="https://huggingface.co/datasets/toufiqmusah/GhanaAgricVQA-Dataset" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -557,69 +962,100 @@
     </section>
 
     <!-- Lightbox for image expansion -->
-    <div class="lightbox" id="lightbox">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+        <div class="lightbox-close" id="lightbox-close" aria-label="Close image preview">&times;</div>
         <img src="" alt="Expanded view" id="lightbox-img">
     </div>
 
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+        </svg>
+    </button>
+
+    <footer>
+        <p>&copy; 2026 Toufiq Musah</p>
+    </footer>
+
     <script>
-        // Smooth scrolling
+        // Smooth scrolling with anchor click handling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
         
-        // Add click handlers to all paper images
-        document.querySelectorAll('.paper-image img').forEach(img => {
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || 'Expanded view';
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Add click handlers to paper & talk images
+        document.querySelectorAll('.paper-image img, .talk-image img').forEach(img => {
+            img.style.cursor = 'pointer';
             img.addEventListener('click', function(e) {
                 e.stopPropagation();
-                lightboxImg.src = this.src;
-                lightbox.classList.add('active');
+                openLightbox(this.src, this.alt);
             });
         });
         
-        // Close lightbox when clicking anywhere on it
-        lightbox.addEventListener('click', function() {
-            lightbox.classList.remove('active');
+        // Close lightbox on click outside image or close button
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox || e.target === lightboxClose) {
+                closeLightbox();
+            }
+        });
+        
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
         });
 
-        // Dark mode toggle
+        // Dark / Light mode toggle
         const themeToggle = document.getElementById('theme-toggle');
         const moonIcon = document.getElementById('moon-icon');
         const sunIcon = document.getElementById('sun-icon');
         const htmlElement = document.documentElement;
         
-        // Check for saved theme preference or default to light mode
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        htmlElement.setAttribute('data-theme', currentTheme);
-        
-        // Set initial icon visibility
-        if (currentTheme === 'dark') {
-            moonIcon.style.display = 'none';
-            sunIcon.style.display = 'block';
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Toggle icon visibility
-            if (newTheme === 'dark') {
+        function updateThemeIcons(theme) {
+            if (theme === 'dark') {
                 moonIcon.style.display = 'none';
                 sunIcon.style.display = 'block';
             } else {
                 moonIcon.style.display = 'block';
                 sunIcon.style.display = 'none';
             }
+        }
+
+        const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+        updateThemeIcons(currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const activeTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcons(newTheme);
         });
 
         // Projects expand/collapse
@@ -636,6 +1072,20 @@
             const expanded = item.classList.toggle('expanded');
             item.setAttribute('aria-expanded', expanded);
         }
+
+        // Back to top button visibility
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 350) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
